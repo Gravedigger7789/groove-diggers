@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dulmbtarfwn73"]
+
+[ext_resource type="Script" path="res://bar.gd" id="1_5r15v"]
+[ext_resource type="Texture2D" uid="uid://crrdm2ufisuhl" path="res://icon.svg" id="1_cnpwb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qox8g"]
+size = Vector2(64, 648)
+
+[node name="Bar" type="Node2D"]
+position = Vector2(256, 324)
+script = ExtResource("1_5r15v")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 5.063)
+texture = ExtResource("1_cnpwb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qox8g")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

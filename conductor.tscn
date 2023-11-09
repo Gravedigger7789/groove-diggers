@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://jw1fkp30ttbj"]
+
+[ext_resource type="Script" path="res://conductor.gd" id="1_lmypu"]
+
+[node name="Conductor" type="AudioStreamPlayer"]
+script = ExtResource("1_lmypu")
+
+[node name="OffsetTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]

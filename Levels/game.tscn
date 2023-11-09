@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhqq5styaiu4x"]
+
+[ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
+[ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
+[ext_resource type="AudioStream" uid="uid://bmp6b3mgusrk6" path="res://Songs/song.ogg" id="3_c113f"]
+[ext_resource type="PackedScene" uid="uid://dulmbtarfwn73" path="res://bar.tscn" id="4_o7dp5"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_brnva")
+
+[node name="Conductor" parent="." instance=ExtResource("2_pjpie")]
+stream = ExtResource("3_c113f")
+volume_db = -15.0
+bpm = 115
+
+[node name="Icon" parent="." instance=ExtResource("4_o7dp5")]
+
+[connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
+[connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
