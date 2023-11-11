@@ -34,6 +34,8 @@ func _process(_delta: float) -> void:
 		song_position -= AudioServer.get_output_latency()
 		#song_position += (1 / COMPENSATE_HZ) * COMPENSATE_FRAMES
 		song_position_beats = int(floor(song_position / seconds_per_beat)) + beats_before_start
+		#print("Song Position: ", song_position)
+		#print("Song Position Beats: ", song_position_beats)
 		_report_beat()
 
 func _report_beat() -> void:

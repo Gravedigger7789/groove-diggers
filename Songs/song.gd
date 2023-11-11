@@ -11,9 +11,12 @@ var chart := []
 var events := []
 var initialized := false
 
+func _ready() -> void:
+	initialize()
+
 func initialize() -> void:
 	if !initialized:
-		var song_data := load_song_from_file(data_path)
+		var song_data := load_from_file(data_path)
 		file_path = song_data["file_path"]
 		if FileAccess.file_exists(file_path):
 			audio_stream = load(file_path)
@@ -26,7 +29,7 @@ func initialize() -> void:
 		initialized = true
 		print("song initialized")
 
-func load_song_from_file(filePath: String) -> Dictionary:
+func load_from_file(filePath: String) -> Dictionary:
 	var parsed_data := {}
 	if FileAccess.file_exists(filePath):
 		var data := FileAccess.open(filePath, FileAccess.READ)

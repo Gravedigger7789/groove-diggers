@@ -14,7 +14,7 @@ song = NodePath("../Song")
 [node name="Song" parent="." instance=ExtResource("4_t8uvp")]
 data_path = "res://Songs/song.json"
 
-[node name="Icon" parent="." instance=ExtResource("4_o7dp5")]
+[node name="Bar" parent="." instance=ExtResource("4_o7dp5")]
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
