@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	position.x += speed * delta
 	#if position.x <= TARGET_X:
 		#print("reached target, ", Time.get_unix_time_from_system() - time_start)
