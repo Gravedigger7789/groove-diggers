@@ -10,15 +10,9 @@ var spawn_2_beat := 0
 var spawn_3_beat := 1
 var spawn_4_beat := 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	conductor.play_with_offset(8)
-	#conductor.play_from_beat(350, 0)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	conductor.play_with_offset()
+	#conductor.play_from_beat(350)
 
 func _spawn_notes(to_spawn: int) -> void:
 	for n in to_spawn:

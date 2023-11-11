@@ -1,9 +1,7 @@
 extends AudioStreamPlayer
 
-@export var bpm := 100
-@export var measures := 4
+@export var song : Song
 
-@onready var seconds_per_beat := 60.0 / bpm
 @onready var offset_timer: Timer = $OffsetTimer
 #@onready var time_since_last_reported_beat := Time.get_unix_time_from_system()
 
@@ -12,15 +10,26 @@ extends AudioStreamPlayer
 #var time_begin: float
 #var time_delay: float
 
+var bpm : int
+var measures : int
+var offset : int
+var seconds_per_beat : float
 var song_position := 0.0
 var song_position_beats := 1
 var last_reported_beat := 0
 var beats_before_start := 0
 var current_measure := 1
 
-
 signal beat(position: int)
 signal measure(position: int)
+
+func _ready() -> void:
+	song.initialize()
+	bpm = song.bpm
+	seconds_per_beat = 60.0 / bpm
+	measures = song.measures
+	offset = song.offset
+	stream = song.audio_stream
 
 func _process(_delta: float) -> void:
 	if playing:
@@ -48,7 +57,7 @@ func _report_beat() -> void:
 		#time_since_last_reported_beat = Time.get_unix_time_from_system()
 		current_measure += 1
 
-func play_from_beat(beat_number: int, offset: int) -> void:
+func play_from_beat(beat_number: int) -> void:
 	#time_begin = Time.get_ticks_usec()
 	#time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
 	play()
@@ -56,7 +65,7 @@ func play_from_beat(beat_number: int, offset: int) -> void:
 	beats_before_start = offset
 	current_measure = beat_number % measures
 
-func play_with_offset(offset: int) -> void:
+func play_with_offset() -> void:
 	beats_before_start = offset
 	offset_timer.wait_time = seconds_per_beat
 	offset_timer.start()
