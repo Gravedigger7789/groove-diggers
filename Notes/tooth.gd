@@ -15,12 +15,16 @@ const SECONDS_TO_TARGET = 2.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var random_position := randi() % 2
-	if random_position <= 0:
-		position = TOP_SPAWN
-	else:
-		position = BOTTOM_SPAWN
+	pass
 
+func set_lane(lane: int) -> void:
+	match lane:
+		0:
+			position = TOP_SPAWN
+		1:
+			position = BOTTOM_SPAWN
+		_:
+			queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
