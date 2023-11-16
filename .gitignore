@@ -2,6 +2,7 @@
 .godot/
 
 
+dist/
 *.exe
 *.pck
 *.zip
