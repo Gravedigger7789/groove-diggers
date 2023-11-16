@@ -1,6 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=15 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Texture2D" uid="uid://ciis2bqwpawrf" path="res://Characters/dwarf-idle.png" id="1_eyjp3"]
+[ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
+[ext_resource type="Texture2D" uid="uid://bl21m4qg3yeup" path="res://Characters/dwarf upward swing.png" id="2_lhdq3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xf56"]
+atlas = ExtResource("2_lhdq3")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuvn2"]
+atlas = ExtResource("2_lhdq3")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwbwy"]
+atlas = ExtResource("2_lhdq3")
+region = Rect2(320, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68bnp"]
 atlas = ExtResource("1_eyjp3")
@@ -34,6 +48,20 @@ region = Rect2(960, 0, 160, 160)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0xf56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuvn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwbwy")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_68bnp")
 }, {
 "duration": 1.0,
@@ -55,13 +83,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_sk472")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"idle",
+"speed": 6.0
 }]
 
 [node name="Dwarf" type="Node2D"]
+script = ExtResource("1_kej81")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-autoplay = "default"
-frame_progress = 0.0187453
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.455239
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
