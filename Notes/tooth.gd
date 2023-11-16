@@ -1,12 +1,12 @@
 extends Area2D
 
 # verticle line position + half object size
-const TARGET_X = 256 + 64
+const TARGET_X = 160 + 32
 # screen res + object size
-const SPAWN_X := 1152 + 128
+const SPAWN_X := 1152 + 64
 const DISTANCE_TO_TARGET = TARGET_X - SPAWN_X
-const TOP_SPAWN = Vector2(SPAWN_X, 162)
-const BOTTOM_SPAWN = Vector2(SPAWN_X, 486)
+const TOP_SPAWN = Vector2(SPAWN_X, 80)
+const BOTTOM_SPAWN = Vector2(SPAWN_X, 280)
 const SECONDS_TO_TARGET = 2.0
 
 @onready var speed := DISTANCE_TO_TARGET / SECONDS_TO_TARGET

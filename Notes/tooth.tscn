@@ -4,12 +4,13 @@
 [ext_resource type="Script" path="res://Notes/tooth.gd" id="1_sgpdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2lo"]
-size = Vector2(128, 128)
+size = Vector2(64, 64)
 
 [node name="Tooth" type="Area2D"]
 script = ExtResource("1_sgpdg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_p3dbc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

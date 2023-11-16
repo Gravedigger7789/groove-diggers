@@ -22,7 +22,7 @@ func _spawn_notes(beat: int) -> void:
 				instance.set_lane(i)
 				add_child(instance)
 
-func _on_conductor_measure(measure_position: int) -> void:
+func _on_conductor_measure(_measure_position: int) -> void:
 	pass
 
 func _on_conductor_beat(beat_position: int) -> void:
