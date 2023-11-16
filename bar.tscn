@@ -1,22 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dulmbtarfwn73"]
+[gd_scene load_steps=3 format=3 uid="uid://dulmbtarfwn73"]
 
 [ext_resource type="Script" path="res://bar.gd" id="1_5r15v"]
 [ext_resource type="Texture2D" uid="uid://crrdm2ufisuhl" path="res://icon.svg" id="1_cnpwb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qox8g"]
-size = Vector2(32, 358)
-
 [node name="Bar" type="Node2D"]
+position = Vector2(160, 180)
 script = ExtResource("1_5r15v")
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 2.75)
 texture = ExtResource("1_cnpwb")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="TopNote" type="RayCast2D" parent="."]
+position = Vector2(-32, -100)
+target_position = Vector2(64, 0)
+collide_with_areas = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_qox8g")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[node name="BottomNote" type="RayCast2D" parent="."]
+position = Vector2(-32, 100)
+target_position = Vector2(64, 0)
+collide_with_areas = true
