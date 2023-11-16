@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6yt0hfmum3nn"]
+
+[ext_resource type="Texture2D" uid="uid://ciis2bqwpawrf" path="res://Characters/dwarf-idle.png" id="1_eyjp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68bnp"]
+atlas = ExtResource("1_eyjp3")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0wy0"]
+atlas = ExtResource("1_eyjp3")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75u42"]
+atlas = ExtResource("1_eyjp3")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsicq"]
+atlas = ExtResource("1_eyjp3")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuhi0"]
+atlas = ExtResource("1_eyjp3")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caqxx"]
+atlas = ExtResource("1_eyjp3")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk472"]
+atlas = ExtResource("1_eyjp3")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ww0jq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68bnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0wy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75u42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsicq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuhi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caqxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk472")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dwarf" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ww0jq")
+autoplay = "default"
+frame_progress = 0.0187453
