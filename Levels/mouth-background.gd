@@ -4,4 +4,4 @@ extends Node2D
 
 func _physics_process(delta: float) -> void:
 	# Scroll background
-	parallax_background.scroll_offset.x -= 496 * delta
+	parallax_background.scroll_offset.x -= 222.448 * delta

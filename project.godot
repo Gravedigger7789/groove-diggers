@@ -13,7 +13,7 @@ config_version=5
 config/name="groove-diggers"
 run/main_scene="res://Levels/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-run/max_fps=144
+run/max_fps=180
 config/icon="res://icon.svg"
 
 [debug]
@@ -57,7 +57,7 @@ jump={
 
 [physics]
 
-common/physics_ticks_per_second=144
+common/physics_ticks_per_second=180
 common/physics_jitter_fix=0.0
 
 [rendering]

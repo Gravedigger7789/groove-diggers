@@ -13,11 +13,11 @@ var offset : int
 var seconds_per_beat : float
 var song_position := 0.0
 var song_position_beats := 1
-var last_reported_beat := 0
+var last_reported_beat := 0.0
 var beats_before_start := 0
 var current_measure := 1
 
-signal beat(position: int)
+signal beat(position: int, seconds_per_beat: float)
 signal measure(position: int)
 
 func _ready() -> void:
@@ -26,6 +26,7 @@ func _ready() -> void:
 	seconds_per_beat = 60.0 / bpm
 	measures = song.measures
 	offset = song.offset
+	beats_before_start = offset
 	stream = song.audio_stream
 
 func _process(_delta: float) -> void:
@@ -39,22 +40,20 @@ func _process(_delta: float) -> void:
 		_report_beat()
 
 func _report_beat() -> void:
-	if last_reported_beat < song_position_beats:
+	if song_position > last_reported_beat:
 		if current_measure > measures:
 			current_measure = 1
-		emit_signal("beat", song_position_beats)
+		emit_signal("beat", song_position_beats, seconds_per_beat)
 		emit_signal("measure", current_measure)
-		last_reported_beat = song_position_beats
+		last_reported_beat += seconds_per_beat
 		current_measure += 1
 
 func play_from_beat(beat_number: int) -> void:
 	play()
 	seek(beat_number * seconds_per_beat)
-	beats_before_start = offset
 	current_measure = beat_number % measures
 
 func play_with_offset() -> void:
-	beats_before_start = offset
 	offset_timer.wait_time = seconds_per_beat
 	offset_timer.start()
 
