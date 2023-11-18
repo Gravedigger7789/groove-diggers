@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://rfsrsv3c3ttv"]
 
-[ext_resource type="Script" path="res://Notes/tooth.gd" id="1_sgpdg"]
-[ext_resource type="Texture2D" uid="uid://conkfqc22yeyo" path="res://Notes/gold-3.png" id="2_wktha"]
+[ext_resource type="Script" path="res://Notes/note.gd" id="1_ufaj4"]
+[ext_resource type="Texture2D" uid="uid://conkfqc22yeyo" path="res://Notes/gold-3.png" id="2_aepwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2lo"]
 size = Vector2(64, 64)
 
-[node name="Tooth" type="Area2D"]
-script = ExtResource("1_sgpdg")
+[node name="Note" type="Area2D"]
+script = ExtResource("1_ufaj4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wktha")
+texture = ExtResource("2_aepwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mt2lo")

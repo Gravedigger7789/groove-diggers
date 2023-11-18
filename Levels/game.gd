@@ -3,7 +3,7 @@ extends Node2D
 @onready var conductor: AudioStreamPlayer = $Conductor
 @onready var song: Song = $Song
 
-const NOTE := preload("res://Notes/tooth.tscn")
+const NOTE := preload("res://Notes/note.tscn")
 
 const TOP_LANE_EVENT_ID = 0
 const BOTTOM_LANE_EVENT_ID = 1

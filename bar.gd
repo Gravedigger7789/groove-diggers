@@ -6,12 +6,16 @@ extends Node2D
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("hit_up"):
 		if top_note.is_colliding():
-			print("top: ", get_raycast_collision_distance(top_note))
-			top_note.get_collider().queue_free()
+			var collision_distance := get_raycast_collision_distance(top_note)
+			var collider := top_note.get_collider()
+			if collider.has_method("hit"):
+				collider.hit(collision_distance)
 	if Input.is_action_just_pressed("hit_down"):
 		if bottom_note.is_colliding():
-			print("bottom: ", get_raycast_collision_distance(bottom_note))
-			bottom_note.get_collider().queue_free()
+			var collision_distance := get_raycast_collision_distance(bottom_note)
+			var collider := bottom_note.get_collider()
+			if collider.has_method("hit"):
+				collider.hit(collision_distance)
 
 func get_raycast_collision_distance(raycast: RayCast2D) -> float:
 	var collision_distance := -1.0
