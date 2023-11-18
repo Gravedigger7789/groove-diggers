@@ -1,7 +1,7 @@
 extends Area2D
 
 # verticle line position + half object size
-const TARGET_X = 160 + 16
+const TARGET_X = 160 + 64
 # screen res + object size
 const SPAWN_X := 1152 + 64
 const DISTANCE_TO_TARGET = TARGET_X - SPAWN_X
