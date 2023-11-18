@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsx8l0cck1pqm"
-path="res://.godot/imported/dwarf-torso-hit-up.png-52a673a9f3e2bbba1fdb6f74a973a5c5.ctex"
+uid="uid://c480amu2yhoq3"
+path="res://.godot/imported/dwarf-hit-up-torso.png-172c67552ff7c75fa6a4416210ba8d83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/dwarf-torso-hit-up.png"
-dest_files=["res://.godot/imported/dwarf-torso-hit-up.png-52a673a9f3e2bbba1fdb6f74a973a5c5.ctex"]
+source_file="res://Characters/dwarf-hit-up-torso.png"
+dest_files=["res://.godot/imported/dwarf-hit-up-torso.png-172c67552ff7c75fa6a4416210ba8d83.ctex"]
 
 [params]
 

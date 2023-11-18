@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1rdl8lxd1hmy"
-path="res://.godot/imported/dwarf-run-bottom.png-4747f6549b802f8e2d963177d8897f05.ctex"
+uid="uid://b8g4n18i7u7i3"
+path="res://.godot/imported/dwarf-run-legs.png-512ad0c460d9b558e31c486f335451b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/dwarf-run-bottom.png"
-dest_files=["res://.godot/imported/dwarf-run-bottom.png-4747f6549b802f8e2d963177d8897f05.ctex"]
+source_file="res://Characters/dwarf-run-legs.png"
+dest_files=["res://.godot/imported/dwarf-run-legs.png-512ad0c460d9b558e31c486f335451b4.ctex"]
 
 [params]
 
