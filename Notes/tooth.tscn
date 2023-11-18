@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rfsrsv3c3ttv"]
 
-[ext_resource type="Texture2D" uid="uid://crrdm2ufisuhl" path="res://icon.svg" id="1_p3dbc"]
 [ext_resource type="Script" path="res://Notes/tooth.gd" id="1_sgpdg"]
+[ext_resource type="Texture2D" uid="uid://conkfqc22yeyo" path="res://Notes/gold-3.png" id="2_wktha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2lo"]
 size = Vector2(64, 64)
@@ -10,8 +10,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_sgpdg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_p3dbc")
+texture = ExtResource("2_wktha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mt2lo")

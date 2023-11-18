@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba5pwqjnw8q6c"]
+[gd_scene load_steps=13 format=3 uid="uid://ba5pwqjnw8q6c"]
 
 [ext_resource type="Script" path="res://Levels/mouth-background.gd" id="1_yajkf"]
 [ext_resource type="Texture2D" uid="uid://bohmxjxs62c68" path="res://Levels/back.png" id="2_cq06s"]
@@ -6,7 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://d17yrkgds8idi" path="res://Levels/roof.png" id="4_8ci4q"]
 [ext_resource type="Texture2D" uid="uid://6nb3fg5i7kb2" path="res://Levels/tounge.png" id="5_3vtg3"]
 [ext_resource type="Texture2D" uid="uid://bc4otfowagyeo" path="res://Levels/gum-tile-alt.png" id="6_4csmd"]
+[ext_resource type="Texture2D" uid="uid://vuoi4wc0enp3" path="res://Notes/tooth-1.png" id="7_dqkme"]
 [ext_resource type="Texture2D" uid="uid://cyuwj0equhf1r" path="res://Levels/gum-tile.png" id="7_msf5t"]
+[ext_resource type="Texture2D" uid="uid://b1iim5aihxaea" path="res://Notes/tooth-3.png" id="8_yctlw"]
+[ext_resource type="Texture2D" uid="uid://wkk2rb3i5b24" path="res://Notes/tooth-2.png" id="9_d8ngf"]
+[ext_resource type="Texture2D" uid="uid://d1n1ocgkddean" path="res://Notes/tooth-5.png" id="10_pl50w"]
+[ext_resource type="Texture2D" uid="uid://8hnewo3hdryi" path="res://Notes/tooth-4.png" id="11_qnh65"]
 
 [node name="Background" type="Node2D"]
 position = Vector2(-1, -1)
@@ -23,29 +28,29 @@ centered = false
 texture = ExtResource("3_4o622")
 offset = Vector2(320, 164)
 
-[node name="ParallaxLayerTopBack" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="TopBack" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(640, 0)
 
-[node name="Roof" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTopBack"]
+[node name="Roof" type="Sprite2D" parent="ParallaxBackground/TopBack"]
 position = Vector2(-1, -1)
 texture = ExtResource("4_8ci4q")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="ParallaxLayerBottomBack" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="BottomBack" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(640, 0)
 
-[node name="Tounge" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBottomBack"]
+[node name="Tounge" type="Sprite2D" parent="ParallaxBackground/BottomBack"]
 texture = ExtResource("5_3vtg3")
 centered = false
 offset = Vector2(0, 16)
 
-[node name="ParallaxLayerBottomFront" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="BottomFront" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(640, 0)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayerBottomFront"]
+[node name="Gums" type="TextureRect" parent="ParallaxBackground/BottomFront"]
 custom_minimum_size = Vector2(640, 0)
 offset_top = 296.0
 offset_right = 640.0
@@ -53,13 +58,118 @@ offset_bottom = 360.0
 texture = ExtResource("6_4csmd")
 stretch_mode = 1
 
-[node name="ParallaxLayerTopFront" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Teeth" type="Node2D" parent="ParallaxBackground/BottomFront"]
+position = Vector2(0, 296)
+
+[node name="Tooth-1" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(32, 0)
+texture = ExtResource("7_dqkme")
+
+[node name="Tooth-3" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(138, 0)
+texture = ExtResource("8_yctlw")
+
+[node name="Tooth-2" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(85, 0)
+texture = ExtResource("9_d8ngf")
+
+[node name="Tooth-5" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(352, 0)
+texture = ExtResource("10_pl50w")
+
+[node name="Tooth-7" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(408, 0)
+texture = ExtResource("7_dqkme")
+
+[node name="Tooth-8" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(280, 0)
+texture = ExtResource("8_yctlw")
+
+[node name="Tooth-9" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(504, 0)
+texture = ExtResource("9_d8ngf")
+
+[node name="Tooth-10" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(557, 0)
+texture = ExtResource("7_dqkme")
+
+[node name="Tooth-11" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(616, 0)
+texture = ExtResource("8_yctlw")
+
+[node name="Tooth-12" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(179, 0)
+texture = ExtResource("9_d8ngf")
+
+[node name="Tooth-6" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(224, -8)
+texture = ExtResource("11_qnh65")
+flip_h = true
+
+[node name="Tooth-4" type="Sprite2D" parent="ParallaxBackground/BottomFront/Teeth"]
+position = Vector2(459, -8)
+texture = ExtResource("11_qnh65")
+
+[node name="TopFront" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(640, 0)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayerTopFront"]
+[node name="Gums" type="TextureRect" parent="ParallaxBackground/TopFront"]
 custom_minimum_size = Vector2(640, 0)
 offset_right = 640.0
 offset_bottom = 64.0
 texture = ExtResource("7_msf5t")
 stretch_mode = 1
 flip_v = true
+
+[node name="Teeth" type="Node2D" parent="ParallaxBackground/TopFront"]
+position = Vector2(0, 64)
+scale = Vector2(1, -1)
+
+[node name="Tooth-1" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(32, 0)
+texture = ExtResource("7_dqkme")
+
+[node name="Tooth-3" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(138, 0)
+texture = ExtResource("8_yctlw")
+
+[node name="Tooth-2" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(85, 0)
+texture = ExtResource("9_d8ngf")
+
+[node name="Tooth-5" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(352, 0)
+texture = ExtResource("10_pl50w")
+
+[node name="Tooth-7" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(408, 0)
+texture = ExtResource("7_dqkme")
+
+[node name="Tooth-8" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(280, 0)
+texture = ExtResource("8_yctlw")
+
+[node name="Tooth-9" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(504, 0)
+texture = ExtResource("9_d8ngf")
+
+[node name="Tooth-10" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(557, 0)
+texture = ExtResource("7_dqkme")
+
+[node name="Tooth-11" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(616, 0)
+texture = ExtResource("8_yctlw")
+
+[node name="Tooth-12" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(179, 0)
+texture = ExtResource("9_d8ngf")
+
+[node name="Tooth-6" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(224, -8)
+texture = ExtResource("11_qnh65")
+flip_h = true
+
+[node name="Tooth-4" type="Sprite2D" parent="ParallaxBackground/TopFront/Teeth"]
+position = Vector2(459, -8)
+texture = ExtResource("11_qnh65")
