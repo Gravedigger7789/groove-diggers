@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=27 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Texture2D" uid="uid://ciis2bqwpawrf" path="res://Characters/dwarf-idle.png" id="1_eyjp3"]
 [ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
 [ext_resource type="Texture2D" uid="uid://bl21m4qg3yeup" path="res://Characters/dwarf-hit-up.png" id="2_p5elv"]
 [ext_resource type="Texture2D" uid="uid://d35ersydo041r" path="res://Characters/dwarf-hit-down.png" id="2_tnhv7"]
 [ext_resource type="Texture2D" uid="uid://igfjiar8q70t" path="res://Characters/dwarf-run.png" id="4_l8sak"]
+[ext_resource type="Texture2D" uid="uid://dtwtgrym8oklc" path="res://Characters/dwarf-run-hit-up.png" id="6_42ie1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxt8o"]
 atlas = ExtResource("2_tnhv7")
@@ -64,6 +65,22 @@ region = Rect2(480, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4r7u"]
 atlas = ExtResource("4_l8sak")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otbqu"]
+atlas = ExtResource("6_42ie1")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03m8r"]
+atlas = ExtResource("6_42ie1")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl14a"]
+atlas = ExtResource("6_42ie1")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1wx4"]
+atlas = ExtResource("6_42ie1")
 region = Rect2(640, 0, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ww0jq"]
@@ -132,6 +149,23 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otbqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03m8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl14a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1wx4")
+}],
+"loop": true,
+"name": &"run-hit-up",
+"speed": 8.0
 }]
 
 [node name="Dwarf" type="Node2D"]
@@ -139,8 +173,8 @@ script = ExtResource("1_kej81")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-animation = &"hit-down"
+animation = &"run-hit-up"
 autoplay = "run"
-frame_progress = 0.17818
+frame_progress = 0.260925
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

@@ -15,7 +15,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("hit"):
-		animated_sprite_2d.animation = "hit-up"
+		animated_sprite_2d.animation = "run-hit-up"
 
 
 func _on_animated_sprite_2d_animation_looped() -> void:
