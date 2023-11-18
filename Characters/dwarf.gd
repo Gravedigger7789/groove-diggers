@@ -6,12 +6,12 @@ extends Node2D
 func _ready() -> void:
 	legs.play("run")
 	torso.play("run")
-	_sync_legs_with_torso()
+	sync_legs_with_torso()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("hit"):
 		torso.play("hit-up")
-	_sync_legs_with_torso()
+	sync_legs_with_torso()
 
 func _on_animated_sprite_2d_animation_looped() -> void:
 	if torso.animation.contains("hit"):
@@ -20,7 +20,7 @@ func _on_animated_sprite_2d_animation_looped() -> void:
 		torso.play("run")
 		torso.set_frame_and_progress(current_frame, current_progress)
 
-func _sync_legs_with_torso() -> void:
+func sync_legs_with_torso() -> void:
 	if torso.animation == ("run"):
 		var current_frame := legs.get_frame()
 		var current_progress := legs.get_frame_progress()

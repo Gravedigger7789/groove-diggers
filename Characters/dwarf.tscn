@@ -5,42 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dsx8l0cck1pqm" path="res://Characters/dwarf-torso-hit-up.png" id="4_mue4v"]
 [ext_resource type="Texture2D" uid="uid://boshum34t5bwe" path="res://Characters/dwarf-run-top.png" id="6_2tyk4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tf6io"]
-atlas = ExtResource("2_nssf1")
-region = Rect2(160, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvoxq"]
-atlas = ExtResource("2_nssf1")
-region = Rect2(320, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_51ijl"]
-atlas = ExtResource("2_nssf1")
-region = Rect2(480, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw8jc"]
-atlas = ExtResource("2_nssf1")
-region = Rect2(640, 0, 160, 160)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r26xj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tf6io")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vvoxq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_51ijl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dw8jc")
-}],
-"loop": true,
-"name": &"run",
-"speed": 8.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_sgv4d"]
 atlas = ExtResource("4_mue4v")
 region = Rect2(0, 0, 160, 160)
@@ -96,16 +60,52 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf6io"]
+atlas = ExtResource("2_nssf1")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvoxq"]
+atlas = ExtResource("2_nssf1")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51ijl"]
+atlas = ExtResource("2_nssf1")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw8jc"]
+atlas = ExtResource("2_nssf1")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r26xj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf6io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvoxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51ijl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw8jc")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
 [node name="Dwarf" type="Node2D"]
 script = ExtResource("1_kej81")
 
-[node name="Legs" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_r26xj")
+[node name="Torso" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ww0jq")
 animation = &"run"
 autoplay = "run"
 
-[node name="Torso" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ww0jq")
+[node name="Legs" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r26xj")
 animation = &"run"
 autoplay = "run"
 
