@@ -14,9 +14,9 @@ const BEATS_VISIBLE_ON_SCREEN = 4.0
 
 func _ready() -> void:
 	song.initialize()
-	conductor.play_with_offset()
+	conductor.play_with_offset(BEATS_VISIBLE_ON_SCREEN)
 	background.speed = (bar.position.x - 672) / (conductor.seconds_per_beat * BEATS_VISIBLE_ON_SCREEN)
-	#conductor.play_from_beat(350)
+	#conductor.play_from_beat(350, BEATS_VISIBLE_ON_SCREEN)
 
 func _spawn_notes(beat: int, screen_time: float) -> void:
 	var temp_beat := beat % 10
