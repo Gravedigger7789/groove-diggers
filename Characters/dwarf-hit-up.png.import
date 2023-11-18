@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl21m4qg3yeup"
-path="res://.godot/imported/dwarf upward swing.png-b62f514a9adb6cf03dfaa10ea9a6db01.ctex"
+path="res://.godot/imported/dwarf-hit-up.png-98a837dbfebb8899f8a2917b8e067c3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/dwarf upward swing.png"
-dest_files=["res://.godot/imported/dwarf upward swing.png-b62f514a9adb6cf03dfaa10ea9a6db01.ctex"]
+source_file="res://Characters/dwarf-hit-up.png"
+dest_files=["res://.godot/imported/dwarf-hit-up.png-98a837dbfebb8899f8a2917b8e067c3e.ctex"]
 
 [params]
 

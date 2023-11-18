@@ -21,7 +21,7 @@ data_path = "res://Songs/song.json"
 [node name="Bar" parent="." instance=ExtResource("4_o7dp5")]
 
 [node name="Dwarf" parent="." instance=ExtResource("6_ovpxb")]
-position = Vector2(80, 164)
+position = Vector2(80, 244)
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
