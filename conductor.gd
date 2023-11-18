@@ -9,8 +9,8 @@ extends AudioStreamPlayer
 
 var bpm : int
 var measures : int
-var offset : int
 var seconds_per_beat : float
+var play_from_position := 0.0
 var song_position := 0.0
 var song_position_beats := 1
 var last_reported_beat := 0.0
@@ -46,13 +46,10 @@ func _report_beat() -> void:
 		last_reported_beat = song_position_beats
 		current_measure += 1
 
-func play_from_beat(beat_number: int, offset: int) -> void:
-	play()
-	seek(beat_number * seconds_per_beat)
-	beats_before_start = offset
-	current_measure = beat_number % measures
-
-func play_with_offset(offset: int) -> void:
+func play_song(offset: int, beat_number := 0) -> void:
+	if beat_number > 0:
+		play_from_position = beat_number * seconds_per_beat
+		current_measure = beat_number % measures
 	beats_before_start = offset
 	offset_timer.wait_time = seconds_per_beat
 	offset_timer.start()
@@ -65,7 +62,7 @@ func _on_offset_timer_timeout() -> void:
 		offset_timer.wait_time = adjusted_offset_time
 		offset_timer.start()
 	else:
-		play()
+		play(play_from_position)
 		offset_timer.stop()
 	_report_beat()
 	song_position_beats += 1
