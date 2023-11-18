@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://igfjiar8q70t"
-path="res://.godot/imported/dwarf-run.png-1a53fcc3f1ed3c64995a94b0418d08b7.ctex"
+uid="uid://boshum34t5bwe"
+path="res://.godot/imported/dwarf-run-top.png-9ce91ec6a9646107f411d589bfca559a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/dwarf-run.png"
-dest_files=["res://.godot/imported/dwarf-run.png-1a53fcc3f1ed3c64995a94b0418d08b7.ctex"]
+source_file="res://Characters/dwarf-run-top.png"
+dest_files=["res://.godot/imported/dwarf-run-top.png-9ce91ec6a9646107f411d589bfca559a.ctex"]
 
 [params]
 

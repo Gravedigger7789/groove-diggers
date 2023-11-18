@@ -1,23 +1,27 @@
 extends Node2D
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var torso: AnimatedSprite2D = $Torso
+@onready var legs: AnimatedSprite2D = $Legs
 
-
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("hit"):
-		#animated_sprite_2d.animation = "hit"
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	legs.play("run")
+	torso.play("run")
+	_sync_legs_with_torso()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("hit"):
-		animated_sprite_2d.animation = "run-hit-up"
-
+		torso.play("hit-up")
+	_sync_legs_with_torso()
 
 func _on_animated_sprite_2d_animation_looped() -> void:
-	if animated_sprite_2d.animation.contains("hit"):
-		animated_sprite_2d.animation = "run"
+	if torso.animation.contains("hit"):
+		var current_frame := legs.get_frame()
+		var current_progress := legs.get_frame_progress()
+		torso.play("run")
+		torso.set_frame_and_progress(current_frame, current_progress)
+
+func _sync_legs_with_torso() -> void:
+	if torso.animation == ("run"):
+		var current_frame := legs.get_frame()
+		var current_progress := legs.get_frame_progress()
+		torso.set_frame_and_progress(current_frame, current_progress)
