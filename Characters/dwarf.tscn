@@ -76,7 +76,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 8.0
+"speed": 7.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftsc3"]
@@ -112,7 +112,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 8.0
+"speed": 7.0
 }]
 
 [node name="Dwarf" type="Node2D"]

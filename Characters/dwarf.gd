@@ -3,8 +3,8 @@ extends Node2D
 @onready var torso: AnimatedSprite2D = $Torso
 @onready var legs: AnimatedSprite2D = $Legs
 
-var top_position := -175.0
-var middle_position := -100.0
+var top_position := -125.0
+var middle_position := -50.0
 var bottom_position := 0.0
 
 var up_click_time := 0.0
