@@ -2,8 +2,10 @@ extends Node2D
 
 var speed := 0.0
 
-@onready var parallax_background: ParallaxBackground = $ParallaxBackground
+@onready var background: ParallaxBackground = $Background
+@onready var foreground: ParallaxBackground = $Foreground
 
 func _physics_process(delta: float) -> void:
 	# Scroll background
-	parallax_background.scroll_offset.x += speed * delta
+	background.scroll_offset.x += speed * delta
+	foreground.scroll_offset.x += speed * delta
