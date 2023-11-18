@@ -38,7 +38,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 12.0
+"speed": 8.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sgv4d"]
@@ -103,12 +103,10 @@ script = ExtResource("1_kej81")
 sprite_frames = SubResource("SpriteFrames_r26xj")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.127481
 
 [node name="Torso" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-animation = &"hit-up"
+animation = &"run"
 autoplay = "run"
-frame_progress = 0.0676204
 
 [connection signal="animation_looped" from="Torso" to="." method="_on_animated_sprite_2d_animation_looped"]
