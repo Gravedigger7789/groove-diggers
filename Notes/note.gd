@@ -1,14 +1,11 @@
 extends Area2D
 
-# verticle line center
-const TARGET_X = 160
 # screen res + half object size
 const SPAWN_X := 640 + 32
-const DISTANCE_TO_TARGET = TARGET_X - SPAWN_X
 const TOP_SPAWN = Vector2(SPAWN_X, 80)
 const BOTTOM_SPAWN = Vector2(SPAWN_X, 280)
 const SECONDS_TO_TARGET = 2.0
-const BEATS_VISIBLE_ON_SCREEN = 4.0
+
 
 var speed : float
 
@@ -18,10 +15,8 @@ var speed : float
 func _ready() -> void:
 	pass
 
-func setup_note(lane: int, seconds_per_beat: float) -> void:
-	speed = DISTANCE_TO_TARGET / (seconds_per_beat * BEATS_VISIBLE_ON_SCREEN)
-	print(seconds_per_beat)
-	print(speed)
+func setup_note(lane: int, screen_time: float, target_position: float) -> void:
+	speed = (target_position - SPAWN_X) / screen_time
 	match lane:
 		0:
 			position = TOP_SPAWN

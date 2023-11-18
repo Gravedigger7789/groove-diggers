@@ -13,6 +13,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("hit_down"):
 		if bottom_note.is_colliding():
 			var collision_distance := get_raycast_collision_distance(bottom_note)
+			print(collision_distance)
 			var collider := bottom_note.get_collider()
 			if collider.has_method("hit"):
 				collider.hit(collision_distance)
