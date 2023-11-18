@@ -22,11 +22,11 @@ gdscript/warnings/untyped_declaration=2
 
 [display]
 
-window/size/viewport_width=638
-window/size/viewport_height=358
-window/size/mode=3
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=960
+window/size/window_height_override=540
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 
 [input]
