@@ -14,8 +14,8 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_cnpwb")
 
 [node name="TopNote" type="RayCast2D" parent="."]
-position = Vector2(-32, -100)
-target_position = Vector2(64, 0)
+position = Vector2(-64, -100)
+target_position = Vector2(96, 0)
 collide_with_areas = true
 
 [node name="Icon2" type="Sprite2D" parent="."]
@@ -25,6 +25,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_cnpwb")
 
 [node name="BottomNote" type="RayCast2D" parent="."]
-position = Vector2(-32, 100)
-target_position = Vector2(64, 0)
+position = Vector2(-64, 100)
+target_position = Vector2(96, 0)
 collide_with_areas = true
