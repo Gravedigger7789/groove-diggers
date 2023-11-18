@@ -8,13 +8,21 @@ position = Vector2(160, 180)
 script = ExtResource("1_5r15v")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 2.75)
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(0, -100)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_cnpwb")
 
 [node name="TopNote" type="RayCast2D" parent="."]
 position = Vector2(-32, -100)
 target_position = Vector2(64, 0)
 collide_with_areas = true
+
+[node name="Icon2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(0, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cnpwb")
 
 [node name="BottomNote" type="RayCast2D" parent="."]
 position = Vector2(-32, 100)

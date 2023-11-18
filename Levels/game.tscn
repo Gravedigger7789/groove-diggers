@@ -1,28 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhqq5styaiu4x"]
+[gd_scene load_steps=7 format=3 uid="uid://bhqq5styaiu4x"]
 
 [ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
 [ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
+[ext_resource type="PackedScene" uid="uid://ba5pwqjnw8q6c" path="res://Levels/mouth-background.tscn" id="2_v2m40"]
 [ext_resource type="PackedScene" uid="uid://dulmbtarfwn73" path="res://bar.tscn" id="4_o7dp5"]
 [ext_resource type="PackedScene" uid="uid://dymtw0pr8dnj8" path="res://Songs/song.tscn" id="4_t8uvp"]
-[ext_resource type="Script" path="res://Levels/ParallaxBackground.gd" id="5_84rhn"]
-[ext_resource type="Texture2D" uid="uid://dc014k7t706s4" path="res://Levels/mouth.png" id="5_yhlmj"]
 [ext_resource type="PackedScene" uid="uid://c6yt0hfmum3nn" path="res://Characters/dwarf.tscn" id="6_ovpxb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_brnva")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(-1, -1)
-transform = Transform2D(1, 0, 0, 1, -1, -1)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-script = ExtResource("5_84rhn")
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_mirroring = Vector2(640, 0)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("5_yhlmj")
+[node name="Background" parent="." instance=ExtResource("2_v2m40")]
 
 [node name="Conductor" parent="." node_paths=PackedStringArray("song") instance=ExtResource("2_pjpie")]
 song = NodePath("../Song")

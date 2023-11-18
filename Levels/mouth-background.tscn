@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba5pwqjnw8q6c"]
+
+[ext_resource type="Script" path="res://Levels/mouth-background.gd" id="1_yajkf"]
+[ext_resource type="Texture2D" uid="uid://bohmxjxs62c68" path="res://Levels/back.png" id="2_cq06s"]
+[ext_resource type="Texture2D" uid="uid://drgn61skqk6al" path="res://Levels/uvula.png" id="3_4o622"]
+[ext_resource type="Texture2D" uid="uid://d17yrkgds8idi" path="res://Levels/roof.png" id="4_8ci4q"]
+[ext_resource type="Texture2D" uid="uid://6nb3fg5i7kb2" path="res://Levels/tounge.png" id="5_3vtg3"]
+[ext_resource type="Texture2D" uid="uid://bc4otfowagyeo" path="res://Levels/gum-tile-alt.png" id="6_4csmd"]
+[ext_resource type="Texture2D" uid="uid://cyuwj0equhf1r" path="res://Levels/gum-tile.png" id="7_msf5t"]
+
+[node name="Background" type="Node2D"]
+position = Vector2(-1, -1)
+script = ExtResource("1_yajkf")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Throat" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(-1, -1)
+texture = ExtResource("2_cq06s")
+centered = false
+
+[node name="Uvula" type="Sprite2D" parent="ParallaxBackground"]
+texture = ExtResource("3_4o622")
+offset = Vector2(320, 180)
+
+[node name="ParallaxLayerTopBack" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Roof" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerTopBack"]
+position = Vector2(-1, -1)
+texture = ExtResource("4_8ci4q")
+centered = false
+
+[node name="ParallaxLayerBottomBack" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Tounge" type="Sprite2D" parent="ParallaxBackground/ParallaxLayerBottomBack"]
+texture = ExtResource("5_3vtg3")
+centered = false
+
+[node name="ParallaxLayerBottomFront" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayerBottomFront"]
+custom_minimum_size = Vector2(640, 0)
+offset_top = 296.0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("6_4csmd")
+stretch_mode = 1
+
+[node name="ParallaxLayerTopFront" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayerTopFront"]
+custom_minimum_size = Vector2(640, 0)
+offset_right = 640.0
+offset_bottom = 64.0
+texture = ExtResource("7_msf5t")
+stretch_mode = 1
+flip_v = true
