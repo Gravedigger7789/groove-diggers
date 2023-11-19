@@ -17,9 +17,6 @@ func initialize() -> void:
 	if !initialized:
 		var song_data := load_from_file(data_path)
 		file_path = song_data["file_path"]
-		print(file_path)
-		if FileAccess.file_exists(file_path):
-			print("exists!")
 		audio_stream = load(file_path)
 		bpm = song_data["bpm"]
 		measures = song_data["measures"]
