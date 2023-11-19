@@ -12,7 +12,9 @@ var down_click_time := 0.0
 var click_tolerance := 200
 
 var health := 100
+var dead := false
 signal health_changed(health: int)
+signal death
 
 func _ready() -> void:
 	health_changed.emit(health)
@@ -61,9 +63,18 @@ func sync_legs_with_torso() -> void:
 		torso.set_frame_and_progress(current_frame, current_progress)
 
 func damage(value: int) -> void:
+	if dead:
+		return
 	health -= value
 	health_changed.emit(health)
-	if !torso.animation.contains("damage"):
+	if health <= 0:
+		torso.play("death")
+		legs.stop()
+		legs.hide()
+		death.emit()
+		dead = true
+		set_process(false)
+	elif !torso.animation.contains("damage"):
 		torso.play("damage")
 
 func _on_torso_animation_finished() -> void:

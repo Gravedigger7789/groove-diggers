@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=30 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
 [ext_resource type="Texture2D" uid="uid://c480amu2yhoq3" path="res://Characters/dwarf-hit-up-torso.png" id="2_6x7x0"]
 [ext_resource type="Texture2D" uid="uid://3qhfd5sicgyg" path="res://Characters/dwarf-damage.png" id="2_rcwvd"]
 [ext_resource type="Texture2D" uid="uid://daiodr4o1jg7p" path="res://Characters/dwarf-hit-down-torso.png" id="3_d5tj5"]
+[ext_resource type="Texture2D" uid="uid://b5u75l2ke756p" path="res://Characters/dwarf-death.png" id="3_qccxk"]
 [ext_resource type="Texture2D" uid="uid://cgkofgihgqjgn" path="res://Characters/dwarf-run-torso.png" id="3_wfquu"]
 [ext_resource type="Texture2D" uid="uid://b8g4n18i7u7i3" path="res://Characters/dwarf-run-legs.png" id="4_rje2y"]
 
@@ -14,6 +15,30 @@ region = Rect2(160, 0, 160, 160)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkl7r"]
 atlas = ExtResource("2_rcwvd")
 region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ssf"]
+atlas = ExtResource("3_qccxk")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vp7x"]
+atlas = ExtResource("3_qccxk")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mwls"]
+atlas = ExtResource("3_qccxk")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dop3o"]
+atlas = ExtResource("3_qccxk")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk1dq"]
+atlas = ExtResource("3_qccxk")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rv3g"]
+atlas = ExtResource("3_qccxk")
+region = Rect2(960, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4scf"]
 atlas = ExtResource("3_d5tj5")
@@ -58,7 +83,30 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage",
-"speed": 8.0
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1ssf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vp7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mwls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dop3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk1dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rv3g")
+}],
+"loop": false,
+"name": &"death",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
