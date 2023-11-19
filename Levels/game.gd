@@ -4,6 +4,7 @@ extends Node2D
 @onready var song: Song = $Song
 @onready var background: Node2D = $Background
 @onready var bar: Node2D = $Bar
+@onready var player: Node2D = $Dwarf
 
 
 const NOTE := preload("res://Notes/note.tscn")
@@ -24,7 +25,15 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 			#"1":
 		var instance := NOTE.instantiate()
 		instance.setup_note(i, screen_time, bar.position.x)
+		instance.note_hit.connect(_on_note_hit)
+		instance.note_missed.connect(_on_note_missed)
 		add_child(instance)
+
+func _on_note_hit(value: int) -> void:
+	print(value)
+
+func _on_note_missed(value: int) -> void:
+	player.damage(value)
 
 func _on_conductor_measure(_measure_position: int) -> void:
 	pass

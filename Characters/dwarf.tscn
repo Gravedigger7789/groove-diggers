@@ -1,9 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=22 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
 [ext_resource type="Texture2D" uid="uid://c480amu2yhoq3" path="res://Characters/dwarf-hit-up-torso.png" id="2_6x7x0"]
+[ext_resource type="Texture2D" uid="uid://3qhfd5sicgyg" path="res://Characters/dwarf-damage.png" id="2_rcwvd"]
 [ext_resource type="Texture2D" uid="uid://cgkofgihgqjgn" path="res://Characters/dwarf-run-torso.png" id="3_wfquu"]
 [ext_resource type="Texture2D" uid="uid://b8g4n18i7u7i3" path="res://Characters/dwarf-run-legs.png" id="4_rje2y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v174y"]
+atlas = ExtResource("2_rcwvd")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkl7r"]
+atlas = ExtResource("2_rcwvd")
+region = Rect2(320, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vnc1"]
 atlas = ExtResource("2_6x7x0")
@@ -41,12 +50,23 @@ region = Rect2(640, 0, 160, 160)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_v174y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkl7r")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2vnc1")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ahtjh")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit-down",
 "speed": 12.0
 }, {
@@ -57,7 +77,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eo5ed")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit-up",
 "speed": 12.0
 }, {
@@ -120,7 +140,7 @@ script = ExtResource("1_kej81")
 
 [node name="Torso" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-animation = &"run"
+animation = &"damage"
 autoplay = "run"
 
 [node name="Legs" type="AnimatedSprite2D" parent="."]
@@ -128,4 +148,4 @@ sprite_frames = SubResource("SpriteFrames_r26xj")
 animation = &"run"
 autoplay = "run"
 
-[connection signal="animation_looped" from="Torso" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="animation_finished" from="Torso" to="." method="_on_torso_animation_finished"]

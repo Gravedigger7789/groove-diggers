@@ -41,8 +41,8 @@ func _report_beat() -> void:
 	if last_reported_beat < song_position_beats:
 		if current_measure > measures:
 			current_measure = 1
-		emit_signal("beat", song_position_beats, seconds_per_beat)
-		emit_signal("measure", current_measure)
+		beat.emit(song_position_beats, seconds_per_beat)
+		measure.emit(current_measure)
 		last_reported_beat = song_position_beats
 		current_measure += 1
 

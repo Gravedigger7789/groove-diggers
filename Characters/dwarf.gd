@@ -50,16 +50,20 @@ func _process(_delta: float) -> void:
 
 	sync_legs_with_torso()
 
-func _on_animated_sprite_2d_animation_looped() -> void:
-	if torso.animation.contains("hit"):
-		var current_frame := legs.get_frame()
-		var current_progress := legs.get_frame_progress()
-		torso.play("run")
-		torso.set_frame_and_progress(current_frame, current_progress)
-		position.y = bottom_position
-
 func sync_legs_with_torso() -> void:
 	if torso.animation == ("run"):
 		var current_frame := legs.get_frame()
 		var current_progress := legs.get_frame_progress()
 		torso.set_frame_and_progress(current_frame, current_progress)
+
+func damage(value: int) -> void:
+	if !torso.animation.contains("damage"):
+		torso.play("damage")
+
+func _on_torso_animation_finished() -> void:
+	if torso.animation.contains("hit") || torso.animation.contains("damage"):
+		var current_frame := legs.get_frame()
+		var current_progress := legs.get_frame_progress()
+		torso.play("run")
+		torso.set_frame_and_progress(current_frame, current_progress)
+		position.y = bottom_position
