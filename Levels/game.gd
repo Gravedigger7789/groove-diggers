@@ -4,6 +4,7 @@ extends Node2D
 @onready var song: Song = $Song
 @onready var background: Node2D = $Background
 @onready var bar: Node2D = $Bar
+@onready var notes: CanvasLayer = $Notes
 @onready var player: Node2D = $Dwarf
 
 
@@ -27,7 +28,7 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 		instance.setup_note(i, screen_time, bar.position.x)
 		instance.note_hit.connect(_on_note_hit)
 		instance.note_missed.connect(_on_note_missed)
-		add_child(instance)
+		notes.add_child(instance)
 
 func _on_note_hit(value: int) -> void:
 	print(value)

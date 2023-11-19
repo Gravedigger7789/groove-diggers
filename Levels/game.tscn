@@ -53,5 +53,8 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "Score: 0"
 
+[node name="Notes" type="CanvasLayer" parent="."]
+layer = 100
+
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
