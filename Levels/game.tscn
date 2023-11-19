@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ba5pwqjnw8q6c" path="res://Levels/mouth-background.tscn" id="2_v2m40"]
 [ext_resource type="PackedScene" uid="uid://dulmbtarfwn73" path="res://bar.tscn" id="4_o7dp5"]
 [ext_resource type="PackedScene" uid="uid://dymtw0pr8dnj8" path="res://Songs/song.tscn" id="4_t8uvp"]
+[ext_resource type="PackedScene" uid="uid://cgq3y3yhtfsl6" path="res://Levels/gui.tscn" id="6_n3u1a"]
 [ext_resource type="PackedScene" uid="uid://c6yt0hfmum3nn" path="res://Characters/dwarf.tscn" id="6_ovpxb"]
-[ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="7_enwoj"]
 [ext_resource type="PackedScene" uid="uid://cj4mr0cwfmfi7" path="res://Levels/pause_menu.tscn" id="8_q3rug"]
 
 [node name="Game" type="Node2D"]
@@ -23,34 +23,7 @@ data_path = "res://Songs/song.json"
 [node name="Dwarf" parent="." instance=ExtResource("6_ovpxb")]
 position = Vector2(80, 200)
 
-[node name="UI" type="CanvasLayer" parent="."]
-layer = 10
-
-[node name="Control" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_enwoj")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Label" type="Label" parent="UI/Control/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Score: 0"
+[node name="GUI" parent="." instance=ExtResource("6_n3u1a")]
 
 [node name="Notes" type="CanvasLayer" parent="."]
 layer = 20
@@ -61,4 +34,6 @@ layer = 20
 visible = false
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
+[connection signal="beat" from="Conductor" to="GUI" method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
+[connection signal="health_changed" from="Dwarf" to="GUI" method="_on_dwarf_health_changed"]

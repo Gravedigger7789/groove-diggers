@@ -7,7 +7,7 @@ extends Node2D
 @onready var bar: Node2D = $Notes/Bar
 @onready var player: Node2D = $Dwarf
 @onready var pause_menu: CanvasLayer = $PauseMenu
-
+@onready var gui: CanvasLayer = $GUI
 
 const NOTE := preload("res://Notes/note.tscn")
 
@@ -46,6 +46,6 @@ func _on_note_missed(value: int) -> void:
 func _on_conductor_measure(_measure_position: int) -> void:
 	pass
 
-func _on_conductor_beat(beat_position: int, seconds_per_beat: float) -> void:
+func _on_conductor_beat(beat_position: int, seconds_per_beat: float, _song_length_beats: int) -> void:
 	var screen_time := seconds_per_beat * BEATS_VISIBLE_ON_SCREEN
 	_spawn_notes(beat_position, screen_time)
