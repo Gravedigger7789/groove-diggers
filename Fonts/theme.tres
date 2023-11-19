@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bsnllwquepaa8"]
+
+[ext_resource type="FontFile" uid="uid://5tgfdu52tqan" path="res://Fonts/Pacifico-Regular.ttf" id="1_je2dq"]
+
+[sub_resource type="FontVariation" id="FontVariation_sysor"]
+base_font = ExtResource("1_je2dq")
+
+[resource]
+default_font = SubResource("FontVariation_sysor")
