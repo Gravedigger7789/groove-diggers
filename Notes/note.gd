@@ -1,10 +1,6 @@
 extends Area2D
 
-@export var gold_textures: Array[Texture] = []
-@export var plaque_textures: Array[Texture] = []
-@export var bacteria_textures: Array[Texture] = []
-
-enum BEAT {FULL, HALF, QUARTER}
+@export var beat_textures: Array[Texture] = []
 
 # screen res + half object size
 const SPAWN_X := 640 + 32
@@ -16,7 +12,7 @@ var speed : float
 var target_position: float
 var target_missed_offset := 64
 var colllected := false
-var current_beat: BEAT
+var current_beat: Global.BEAT
 
 @onready var time_start := Time.get_unix_time_from_system()
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -28,9 +24,9 @@ signal note_missed(value: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sprite_2d.texture = gold_textures[current_beat]
+	sprite_2d.texture = beat_textures[current_beat]
 
-func setup_note(lane: int, screen_time: float, target_pos: float, beat: BEAT) -> void:
+func setup_note(lane: int, screen_time: float, target_pos: float, beat: Global.BEAT) -> void:
 	target_position = target_pos
 	speed = (target_position - SPAWN_X) / screen_time
 	current_beat = beat

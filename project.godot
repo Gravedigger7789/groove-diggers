@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "Mobile")
 run/max_fps=180
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Globals/global.gd"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2
