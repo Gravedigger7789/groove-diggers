@@ -7,9 +7,9 @@ extends Node2D
 @onready var bar: Node2D = $Notes/Bar
 @onready var player: Node2D = $Dwarf
 @onready var pause_menu: CanvasLayer = $PauseMenu
+@onready var game_over_menu: CanvasLayer = $GameOverMenu
 @onready var gui: CanvasLayer = $GUI
 @onready var sun: DirectionalLight2D = $Sun
-
 
 const NOTE := preload("res://Notes/note.tscn")
 const BEATS_VISIBLE_ON_SCREEN = 4.0
@@ -18,6 +18,7 @@ var score := 0 :
 	set(value): 
 		score = value
 		gui.update_score(value)
+		game_over_menu.update_score(value)
 
 func _ready() -> void:
 	song.initialize()
@@ -60,3 +61,6 @@ func _on_dwarf_death() -> void:
 	notes.queue_free()
 	var tween := create_tween()
 	tween.tween_property(sun, "energy", 0.9, 1.0)
+	await get_tree().create_timer(1.0).timeout
+	gui.hide()
+	game_over_menu.show()
