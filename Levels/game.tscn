@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhqq5styaiu4x"]
+[gd_scene load_steps=9 format=3 uid="uid://bhqq5styaiu4x"]
 
 [ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
 [ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dymtw0pr8dnj8" path="res://Songs/song.tscn" id="4_t8uvp"]
 [ext_resource type="PackedScene" uid="uid://c6yt0hfmum3nn" path="res://Characters/dwarf.tscn" id="6_ovpxb"]
 [ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="7_enwoj"]
+[ext_resource type="PackedScene" uid="uid://cj4mr0cwfmfi7" path="res://Levels/pause_menu.tscn" id="8_q3rug"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_brnva")
@@ -54,7 +55,10 @@ size_flags_vertical = 0
 text = "Score: 0"
 
 [node name="Notes" type="CanvasLayer" parent="."]
-layer = 100
+layer = 20
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_q3rug")]
+visible = false
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]

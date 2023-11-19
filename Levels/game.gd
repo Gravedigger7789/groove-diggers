@@ -6,6 +6,7 @@ extends Node2D
 @onready var bar: Node2D = $Bar
 @onready var notes: CanvasLayer = $Notes
 @onready var player: Node2D = $Dwarf
+@onready var pause_menu: CanvasLayer = $PauseMenu
 
 
 const NOTE := preload("res://Notes/note.tscn")
@@ -18,6 +19,12 @@ func _ready() -> void:
 	song.initialize()
 	conductor.play_song(BEATS_VISIBLE_ON_SCREEN)
 	background.speed = (bar.position.x - 672) / (conductor.seconds_per_beat * BEATS_VISIBLE_ON_SCREEN)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		get_viewport().set_input_as_handled()
+		pause_menu.show()
+		get_tree().paused = true
 
 func _spawn_notes(beat: int, screen_time: float) -> void:
 	var temp_beat := beat % 10
