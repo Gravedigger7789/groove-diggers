@@ -12,6 +12,12 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_brnva")
 
+[node name="Sun" type="DirectionalLight2D" parent="."]
+energy = 0.4
+blend_mode = 1
+range_layer_min = -200
+range_layer_max = 1
+
 [node name="Background" parent="." instance=ExtResource("2_v2m40")]
 
 [node name="Conductor" parent="." node_paths=PackedStringArray("song") instance=ExtResource("2_pjpie")]

@@ -8,6 +8,8 @@ extends Node2D
 @onready var player: Node2D = $Dwarf
 @onready var pause_menu: CanvasLayer = $PauseMenu
 @onready var gui: CanvasLayer = $GUI
+@onready var sun: DirectionalLight2D = $Sun
+
 
 const NOTE := preload("res://Notes/note.tscn")
 const BEATS_VISIBLE_ON_SCREEN = 4.0
@@ -52,8 +54,9 @@ func _on_conductor_beat(beat_position: int, seconds_per_beat: float, _song_lengt
 	var screen_time := seconds_per_beat * BEATS_VISIBLE_ON_SCREEN
 	_spawn_notes(beat_position, screen_time)
 
-
 func _on_dwarf_death() -> void:
 	conductor.stop()
 	background.speed = 0
 	notes.queue_free()
+	var tween := create_tween()
+	tween.tween_property(sun, "energy", 0.9, 1.0)
