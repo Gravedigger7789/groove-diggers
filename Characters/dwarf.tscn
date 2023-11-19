@@ -213,6 +213,6 @@ energy = 0.75
 range_layer_min = -200
 range_layer_max = 100
 texture = SubResource("GradientTexture2D_84t8e")
-texture_scale = 2.0
+texture_scale = 3.0
 
 [connection signal="animation_finished" from="Torso" to="." method="_on_torso_animation_finished"]

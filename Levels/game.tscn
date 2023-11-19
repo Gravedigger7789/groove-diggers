@@ -14,7 +14,7 @@
 script = ExtResource("1_brnva")
 
 [node name="Sun" type="DirectionalLight2D" parent="."]
-energy = 0.4
+energy = 0.7
 blend_mode = 1
 range_layer_min = -200
 range_layer_max = 1
