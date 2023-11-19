@@ -63,22 +63,23 @@ func sync_legs_with_torso() -> void:
 		torso.set_frame_and_progress(current_frame, current_progress)
 
 func damage(value: int) -> void:
-	if dead:
-		return
-	health -= value
-	health_changed.emit(health)
-	if health <= 0:
-		torso.play("death")
-		legs.stop()
-		legs.hide()
-		death.emit()
-		dead = true
-		set_process(false)
-	elif !torso.animation.contains("damage"):
-		torso.play("damage")
+	if !dead:
+		health -= value
+		health_changed.emit(health)
+		if health <= 0:
+			dead = true
+			set_process(false)
+			set_process_input(false)
+			position.y = bottom_position
+			torso.play("death")
+			legs.stop()
+			legs.hide()
+			death.emit()
+		elif !torso.animation.contains("damage"):
+			torso.play("damage")
 
 func _on_torso_animation_finished() -> void:
-	if torso.animation.contains("hit") || torso.animation.contains("damage"):
+	if !dead && (torso.animation.contains("hit") || torso.animation.contains("damage")):
 		var current_frame := legs.get_frame()
 		var current_progress := legs.get_frame_progress()
 		torso.play("run")

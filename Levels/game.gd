@@ -51,3 +51,9 @@ func _on_conductor_measure(_measure_position: int) -> void:
 func _on_conductor_beat(beat_position: int, seconds_per_beat: float, _song_length_beats: int) -> void:
 	var screen_time := seconds_per_beat * BEATS_VISIBLE_ON_SCREEN
 	_spawn_notes(beat_position, screen_time)
+
+
+func _on_dwarf_death() -> void:
+	conductor.stop()
+	background.speed = 0
+	notes.queue_free()
