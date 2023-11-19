@@ -9,8 +9,10 @@ const SECONDS_TO_TARGET = 2.0
 var speed : float
 var target_position: float
 var target_missed_offset := 64
+var colllected := false
 
 @onready var time_start := Time.get_unix_time_from_system()
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal note_hit(value: int)
 signal note_missed(value: int)
@@ -33,7 +35,7 @@ func setup_note(lane: int, screen_time: float, target_pos: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	position.x += speed * delta
-	if position.x <= target_position - target_missed_offset:
+	if !colllected && position.x <= target_position - target_missed_offset:
 		note_missed.emit(5)
 		queue_free()
 	#position.x = round(position.x)
@@ -48,4 +50,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func hit(hit_position: float) -> void:
 	print("alive for ", Time.get_unix_time_from_system() - time_start)
 	note_hit.emit(100)
-	queue_free()
+	colllected = true
+	animation_player.play("collect")
