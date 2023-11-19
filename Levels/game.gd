@@ -32,7 +32,7 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 		#match song.events[i][temp_beat]:
 			#"1":
 		var instance := NOTE.instantiate()
-		instance.setup_note(i, screen_time, bar.position.x)
+		instance.setup_note(i, screen_time, bar.position.x, instance.BEAT.FULL)
 		instance.note_hit.connect(_on_note_hit)
 		instance.note_missed.connect(_on_note_missed)
 		notes.add_child(instance)

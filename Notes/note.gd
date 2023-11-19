@@ -1,5 +1,11 @@
 extends Area2D
 
+@export var gold_textures: Array[Texture] = []
+@export var plaque_textures: Array[Texture] = []
+@export var bacteria_textures: Array[Texture] = []
+
+enum BEAT {FULL, HALF, QUARTER}
+
 # screen res + half object size
 const SPAWN_X := 640 + 32
 const TOP_SPAWN = Vector2(SPAWN_X, 80)
@@ -10,20 +16,24 @@ var speed : float
 var target_position: float
 var target_missed_offset := 64
 var colllected := false
+var current_beat: BEAT
 
 @onready var time_start := Time.get_unix_time_from_system()
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 
 signal note_hit(value: int)
 signal note_missed(value: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	sprite_2d.texture = gold_textures[current_beat]
 
-func setup_note(lane: int, screen_time: float, target_pos: float) -> void:
+func setup_note(lane: int, screen_time: float, target_pos: float, beat: BEAT) -> void:
 	target_position = target_pos
 	speed = (target_position - SPAWN_X) / screen_time
+	current_beat = beat
 	match lane:
 		0:
 			position = TOP_SPAWN

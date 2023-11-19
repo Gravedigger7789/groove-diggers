@@ -141,7 +141,7 @@ script = ExtResource("1_kej81")
 
 [node name="Torso" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-animation = &"hit-down"
+animation = &"run"
 autoplay = "run"
 
 [node name="Legs" type="AnimatedSprite2D" parent="."]
