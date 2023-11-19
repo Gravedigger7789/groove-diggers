@@ -3,8 +3,8 @@ extends Node2D
 @onready var conductor: AudioStreamPlayer = $Conductor
 @onready var song: Song = $Song
 @onready var background: Node2D = $Background
-@onready var bar: Node2D = $Bar
 @onready var notes: CanvasLayer = $Notes
+@onready var bar: Node2D = $Notes/Bar
 @onready var player: Node2D = $Dwarf
 @onready var pause_menu: CanvasLayer = $PauseMenu
 
