@@ -10,10 +10,12 @@ extends Node2D
 @onready var gui: CanvasLayer = $GUI
 
 const NOTE := preload("res://Notes/note.tscn")
-
-const TOP_LANE_EVENT_ID = 0
-const BOTTOM_LANE_EVENT_ID = 1
 const BEATS_VISIBLE_ON_SCREEN = 4.0
+
+var score := 0 : 
+	set(value): 
+		score = value
+		gui.update_score(value)
 
 func _ready() -> void:
 	song.initialize()
@@ -38,7 +40,7 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 		notes.add_child(instance)
 
 func _on_note_hit(value: int) -> void:
-	print(value)
+	score += value
 
 func _on_note_missed(value: int) -> void:
 	player.damage(value)

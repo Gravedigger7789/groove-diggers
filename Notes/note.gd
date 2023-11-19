@@ -31,9 +31,9 @@ func setup_note(lane: int, screen_time: float, target_pos: float, beat: Global.B
 	speed = (target_position - SPAWN_X) / screen_time
 	current_beat = beat
 	match lane:
-		0:
+		Global.LANE.TOP:
 			position = TOP_SPAWN
-		1:
+		Global.LANE.BOTTOM:
 			position = BOTTOM_SPAWN
 		_:
 			queue_free()
