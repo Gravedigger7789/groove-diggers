@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var restart: Button = %Restart
 
 func update_score(value: int) -> void:
-	score_label.text = "Score: " + str(value)
+	score_label.text = "Gold: " + str(value)
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()

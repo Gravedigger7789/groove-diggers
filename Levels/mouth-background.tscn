@@ -91,7 +91,7 @@ position = Vector2(557, 0)
 texture = ExtResource("7_dqkme")
 
 [node name="Tooth-11" type="Sprite2D" parent="Background/BottomFront/Teeth"]
-position = Vector2(616, 0)
+position = Vector2(610, 0)
 texture = ExtResource("8_yctlw")
 
 [node name="Tooth-12" type="Sprite2D" parent="Background/BottomFront/Teeth"]
@@ -146,7 +146,7 @@ position = Vector2(557, 0)
 texture = ExtResource("7_dqkme")
 
 [node name="Tooth-11" type="Sprite2D" parent="Background/TopFront/Teeth"]
-position = Vector2(616, 0)
+position = Vector2(610, 0)
 texture = ExtResource("8_yctlw")
 
 [node name="Tooth-12" type="Sprite2D" parent="Background/TopFront/Teeth"]

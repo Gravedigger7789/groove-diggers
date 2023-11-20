@@ -11,7 +11,7 @@ var current_beat : int
 var max_beats := 1
 
 func update_score(value: int) -> void:
-	score_label.text = "Score: " + str(value)
+	score_label.text = "Gold: " + str(value)
 
 func _process(_delta: float) -> void:
 	if health_bar.max_value != max_health:
