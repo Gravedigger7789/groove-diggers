@@ -35,11 +35,32 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _spawn_notes(beat: int, screen_time: float) -> void:
 	var number_of_notes := int(beat_map.size() / song.beats_per_measure)
-	#print(number_of_notes)
-	print("Beat ", beat)
+	var note_slice := beat_map.slice(number_of_notes * beat, (number_of_notes * beat) + number_of_notes)
+	for note: String in note_slice:
+		var beat_map_note: Global.BeatMap = int(note)
+		match beat_map_note:
+			Global.BeatMap.TOP:
+				_spawn_note(Global.LANE.TOP, Global.BEAT.FULL, screen_time)
+			Global.BeatMap.BOTTOM:
+				_spawn_note(Global.LANE.BOTTOM, Global.BEAT.FULL, screen_time)
+			Global.BeatMap.BOTH:
+				_spawn_note(Global.LANE.TOP, Global.BEAT.FULL, screen_time)
+				_spawn_note(Global.LANE.BOTTOM, Global.BEAT.FULL, screen_time)
+			Global.BeatMap.BACTERIA:
+				pass # Spawn long bacteria until told not to
+			Global.BeatMap.END:
+				pass # tell not to spawn bacteria
+		await get_tree().create_timer(conductor.seconds_per_beat / note_slice.size()).timeout
 
+	#var instance := NOTE.instantiate()
+	#instance.setup_note(1, screen_time, bar.position.x, Global.BEAT.FULL)
+	#instance.note_hit.connect(_on_note_hit)
+	#instance.note_missed.connect(_on_note_missed)
+	#notes.add_child(instance)
+
+func _spawn_note(lane: Global.LANE, beat: Global.BEAT, screen_time: float) -> void:
 	var instance := NOTE.instantiate()
-	instance.setup_note(1, screen_time, bar.position.x, Global.BEAT.FULL)
+	instance.setup_note(lane, screen_time, bar.position.x, beat)
 	instance.note_hit.connect(_on_note_hit)
 	instance.note_missed.connect(_on_note_missed)
 	notes.add_child(instance)
@@ -52,10 +73,10 @@ func _on_note_missed(value: int) -> void:
 
 func _on_conductor_measure(measure_position: int) -> void:
 	var measure_look_ahead := int (BEATS_VISIBLE_ON_SCREEN / song.beats_per_measure) + measure_position
-	var song_beat_map: String = song.beat_map[measure_position]
+	var song_beat_map: String = song.beat_map[measure_look_ahead]
 	beat_map = song_beat_map.split()
-	print("Measure Look Ahead ", measure_look_ahead)
-	print("Measure ", measure_position)
+	#print("Measure Look Ahead ", measure_look_ahead)
+	#print("Measure ", measure_position)
 	pass
 
 func _on_conductor_beat(beat_position: int, seconds_per_beat: float, _song_length_beats: int) -> void:
