@@ -44,11 +44,9 @@ func _physics_process(delta: float) -> void:
 	if !colllected && position.x <= target_position - target_missed_offset:
 		note_missed.emit(5)
 		queue_free()
-	#position.x = round(position.x)
-	#if position.x <= TARGET_X:
-		#print("reached target ", Time.get_unix_time_from_system() - time_start)
-		#print(position.x)
-		#queue_free()
+
+	#if position.x <= target_position && !colllected:
+		#hit(position.x)
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
