@@ -19,6 +19,8 @@ var score := 0 :
 		score = value
 		gui.update_score(value)
 		game_over_menu.update_score(value)
+var beat_map := []
+
 
 func _ready() -> void:
 	song.initialize()
@@ -32,15 +34,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().paused = true
 
 func _spawn_notes(beat: int, screen_time: float) -> void:
-	var temp_beat := beat % 10
-	for i in range(song.events.size()):
-		#match song.events[i][temp_beat]:
-			#"1":
-		var instance := NOTE.instantiate()
-		instance.setup_note(i, screen_time, bar.position.x, Global.BEAT.FULL)
-		instance.note_hit.connect(_on_note_hit)
-		instance.note_missed.connect(_on_note_missed)
-		notes.add_child(instance)
+	var number_of_notes := int(beat_map.size() / song.beats_per_measure)
+	#print(number_of_notes)
+	print("Beat ", beat)
+
+	var instance := NOTE.instantiate()
+	instance.setup_note(1, screen_time, bar.position.x, Global.BEAT.FULL)
+	instance.note_hit.connect(_on_note_hit)
+	instance.note_missed.connect(_on_note_missed)
+	notes.add_child(instance)
 
 func _on_note_hit(value: int) -> void:
 	score += value
@@ -48,7 +50,12 @@ func _on_note_hit(value: int) -> void:
 func _on_note_missed(value: int) -> void:
 	player.damage(value)
 
-func _on_conductor_measure(_measure_position: int) -> void:
+func _on_conductor_measure(measure_position: int) -> void:
+	var measure_look_ahead := int (BEATS_VISIBLE_ON_SCREEN / song.beats_per_measure) + measure_position
+	var song_beat_map: String = song.beat_map[measure_position]
+	beat_map = song_beat_map.split()
+	print("Measure Look Ahead ", measure_look_ahead)
+	print("Measure ", measure_position)
 	pass
 
 func _on_conductor_beat(beat_position: int, seconds_per_beat: float, _song_length_beats: int) -> void:

@@ -9,14 +9,15 @@ extends AudioStreamPlayer
 
 var bpm : int
 var measures : int
+var beats_per_measure : int
 var seconds_per_beat : float
 var play_from_position := 0.0
 var song_position := 0.0
 var song_position_beats := 1
 var song_length_beats := 0
-var last_reported_beat := 0.0
+var last_reported_beat := -1
 var beats_before_start := 0
-var current_measure := 1
+var last_reported_measure := -1
 
 signal beat(position: int, seconds_per_beat: float, song_length_beats: int)
 signal measure(position: int)
@@ -24,6 +25,7 @@ signal measure(position: int)
 func _ready() -> void:
 	song.initialize()
 	bpm = song.bpm
+	beats_per_measure = song.beats_per_measure
 	seconds_per_beat = 60.0 / bpm
 	measures = song.measures
 	stream = song.audio_stream
@@ -41,17 +43,18 @@ func _process(_delta: float) -> void:
 
 func _report_beat() -> void:
 	if last_reported_beat < song_position_beats:
-		if current_measure > measures:
-			current_measure = 1
-		beat.emit(song_position_beats, seconds_per_beat, song_length_beats)
-		measure.emit(current_measure)
 		last_reported_beat = song_position_beats
-		current_measure += 1
+		var current_measure := int((last_reported_beat - 1) / measures)
+		if last_reported_measure < current_measure:
+			last_reported_measure = current_measure
+			measure.emit(current_measure - (beats_before_start / measures))
+		var beat_number_in_measure := last_reported_beat - (beats_per_measure * (last_reported_measure))
+		beat.emit(beat_number_in_measure - 1, seconds_per_beat, song_length_beats)
 
 func play_song(offset: int, beat_number := 0) -> void:
 	if beat_number > 0:
 		play_from_position = beat_number * seconds_per_beat
-		current_measure = beat_number % measures
+		#last_reported_measure = int((beat_number - 1) / measures)
 	beats_before_start = offset
 	offset_timer.wait_time = seconds_per_beat
 	offset_timer.start()

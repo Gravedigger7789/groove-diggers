@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhqq5styaiu4x"]
+[gd_scene load_steps=13 format=3 uid="uid://bhqq5styaiu4x"]
 
 [ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
 [ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
@@ -7,8 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dymtw0pr8dnj8" path="res://Songs/song.tscn" id="4_t8uvp"]
 [ext_resource type="PackedScene" uid="uid://cgq3y3yhtfsl6" path="res://Levels/gui.tscn" id="6_n3u1a"]
 [ext_resource type="PackedScene" uid="uid://c6yt0hfmum3nn" path="res://Characters/dwarf.tscn" id="6_ovpxb"]
+[ext_resource type="Texture2D" uid="uid://b1gs022vj36t8" path="res://Notes/bacteria-1.png" id="8_gs03b"]
 [ext_resource type="PackedScene" uid="uid://6mxlmv18fmdl" path="res://Levels/game_over_menu.tscn" id="8_hp7pg"]
 [ext_resource type="PackedScene" uid="uid://cj4mr0cwfmfi7" path="res://Levels/pause_menu.tscn" id="8_q3rug"]
+[ext_resource type="Texture2D" uid="uid://bruq8yaibt0y" path="res://Notes/plaque-3.png" id="9_q77ns"]
+[ext_resource type="Texture2D" uid="uid://brgfd6wthl8h" path="res://Notes/bacteria-2.png" id="10_2c0yk"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_brnva")
@@ -36,6 +39,46 @@ position = Vector2(80, 200)
 layer = 20
 
 [node name="Bar" parent="Notes" instance=ExtResource("4_o7dp5")]
+
+[node name="Bacteria-1" type="Sprite2D" parent="Notes"]
+position = Vector2(294, 266)
+texture = ExtResource("8_gs03b")
+
+[node name="Plaque-3" type="Sprite2D" parent="Notes"]
+position = Vector2(335, 266)
+texture = ExtResource("9_q77ns")
+
+[node name="Plaque-3" type="Sprite2D" parent="Notes/Plaque-3"]
+position = Vector2(53, 2)
+texture = ExtResource("9_q77ns")
+
+[node name="Plaque-4" type="Sprite2D" parent="Notes/Plaque-3"]
+position = Vector2(78, 2)
+texture = ExtResource("9_q77ns")
+
+[node name="Plaque-3" type="Sprite2D" parent="Notes/Plaque-3/Plaque-4"]
+position = Vector2(27, 0)
+texture = ExtResource("9_q77ns")
+
+[node name="Plaque-4" type="Sprite2D" parent="Notes/Plaque-3/Plaque-4"]
+position = Vector2(52, 0)
+texture = ExtResource("9_q77ns")
+
+[node name="Plaque-3" type="Sprite2D" parent="Notes/Plaque-3/Plaque-4/Plaque-4"]
+position = Vector2(22, -1)
+texture = ExtResource("9_q77ns")
+
+[node name="Plaque-4" type="Sprite2D" parent="Notes/Plaque-3/Plaque-4/Plaque-4"]
+position = Vector2(49, -2)
+texture = ExtResource("9_q77ns")
+
+[node name="Plaque-4" type="Sprite2D" parent="Notes"]
+position = Vector2(363, 267)
+texture = ExtResource("9_q77ns")
+
+[node name="Bacteria-2" type="Sprite2D" parent="Notes/Plaque-4"]
+position = Vector2(-78, -189)
+texture = ExtResource("10_2c0yk")
 
 [node name="GameOverMenu" parent="." instance=ExtResource("8_hp7pg")]
 visible = false

@@ -6,8 +6,8 @@ var file_path : String
 var audio_stream : AudioStream
 var bpm : int
 var measures : int
-var chart := []
-var events := []
+var beats_per_measure : int
+var beat_map := []
 var initialized := false
 
 func _ready() -> void:
@@ -20,9 +20,8 @@ func initialize() -> void:
 		audio_stream = load(file_path)
 		bpm = song_data["bpm"]
 		measures = song_data["measures"]
-		chart = song_data["chart"]
-		for i in range(chart.size()):
-			events.append(chart[i]["event"])
+		beats_per_measure = song_data["beats_per_measure"]
+		beat_map = song_data["beat_map"]
 		initialized = true
 		print("song initialized")
 
