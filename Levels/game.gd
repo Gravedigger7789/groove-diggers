@@ -59,11 +59,12 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 	#notes.add_child(instance)
 
 func _spawn_note(lane: Global.LANE, beat: Global.BEAT, screen_time: float) -> void:
-	var instance := NOTE.instantiate()
-	instance.setup_note(lane, screen_time, bar.position.x, beat)
-	instance.note_hit.connect(_on_note_hit)
-	instance.note_missed.connect(_on_note_missed)
-	notes.add_child(instance)
+	if notes && bar:
+		var instance := NOTE.instantiate()
+		instance.setup_note(lane, screen_time, bar.position.x, beat)
+		instance.note_hit.connect(_on_note_hit)
+		instance.note_missed.connect(_on_note_missed)
+		notes.add_child(instance)
 
 func _on_note_hit(value: int) -> void:
 	score += value
@@ -73,11 +74,13 @@ func _on_note_missed(value: int) -> void:
 
 func _on_conductor_measure(measure_position: int) -> void:
 	var measure_look_ahead := int (BEATS_VISIBLE_ON_SCREEN / song.beats_per_measure) + measure_position
-	var song_beat_map: String = song.beat_map[measure_look_ahead]
-	beat_map = song_beat_map.split()
+	if song.beat_map.size() > measure_look_ahead:
+		var song_beat_map: String = song.beat_map[measure_look_ahead]
+		beat_map = song_beat_map.split()
+	else:
+		beat_map = []
 	#print("Measure Look Ahead ", measure_look_ahead)
 	#print("Measure ", measure_position)
-	pass
 
 func _on_conductor_beat(beat_position: int, seconds_per_beat: float, _song_length_beats: int) -> void:
 	var screen_time := seconds_per_beat * BEATS_VISIBLE_ON_SCREEN
