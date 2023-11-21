@@ -62,11 +62,6 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 				pass # tell not to spawn bacteria
 		await get_tree().create_timer(conductor.seconds_per_beat / note_slice.size()).timeout
 
-	#var instance := NOTE.instantiate()
-	#instance.setup_note(1, screen_time, bar.position.x, Global.BEAT.FULL)
-	#instance.note_hit.connect(_on_note_hit)
-	#instance.note_missed.connect(_on_note_missed)
-	#notes.add_child(instance)
 
 func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> void:
 	if notes && bar:
@@ -76,7 +71,7 @@ func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> vo
 		instance.note_missed.connect(_on_note_missed)
 		notes.add_child(instance)
 
-func _on_note_hit(value: int, quality: Global.Quality) -> void:
+func _on_note_hit(value: int, _quality: Global.Quality) -> void:
 	score += value
 	combo += 1
 
