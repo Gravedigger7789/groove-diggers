@@ -1,4 +1,5 @@
 extends Area2D
+class_name Note2D
 
 @export var beat_textures: Array[Texture] = []
 
@@ -56,8 +57,16 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func hit(hit_position: float) -> void:
+	var hit_quality := calculate_hit_quality(hit_position, Time.get_unix_time_from_system())
+	note_hit.emit(100 * hit_quality, hit_quality)
+	colllected = true
+	quality_label.text = Global.Quality.keys()[hit_quality]
+	quality_label.show()
+	animation_player.play("collect")
+
+func calculate_hit_quality(hit_position: float, hit_time: float) -> Global.Quality:
 	var hit_position_center: float = hit_position + (collision_shape_2d.shape.size.x / 2)
-	var time_alive := Time.get_unix_time_from_system() - time_start
+	var time_alive := hit_time - time_start
 	var percent_error_time: float = (abs(time_alive - target_time) / target_time) * 100
 	var percent_error_position: float = (abs(hit_position_center - target_position) / target_position) * 100
 	var hit_quality := Global.Quality.OK
@@ -67,8 +76,4 @@ func hit(hit_position: float) -> void:
 		hit_quality = Global.Quality.GREAT
 	elif percent_error_time < 10 || percent_error_position < 25:
 		hit_quality = Global.Quality.GOOD
-	note_hit.emit(100 * hit_quality, hit_quality)
-	colllected = true
-	quality_label.text = Global.Quality.keys()[hit_quality]
-	quality_label.show()
-	animation_player.play("collect")
+	return hit_quality

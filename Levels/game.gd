@@ -12,6 +12,7 @@ extends Node2D
 @onready var sun: DirectionalLight2D = $Sun
 
 const NOTE := preload("res://Notes/note.tscn")
+const BACTERIA = preload("res://Notes/bacteria.tscn")
 const BEATS_VISIBLE_ON_SCREEN = 4.0
 
 var beat_map := []
@@ -57,9 +58,9 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 				_spawn_note(Global.Lane.TOP, beat_type, screen_time)
 				_spawn_note(Global.Lane.BOTTOM, beat_type, screen_time)
 			Global.BeatMap.BACTERIA:
-				pass # Spawn long bacteria until told not to
+				_spawn_long_note(Global.Lane.BOTTOM, 0, screen_time)
 			Global.BeatMap.END:
-				pass # tell not to spawn bacteria
+				_spawn_long_note(Global.Lane.BOTTOM, 1, screen_time)
 		await get_tree().create_timer(conductor.seconds_per_beat / note_slice.size()).timeout
 
 
@@ -70,6 +71,16 @@ func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> vo
 		instance.note_hit.connect(_on_note_hit)
 		instance.note_missed.connect(_on_note_missed)
 		notes.add_child(instance)
+
+func _spawn_long_note(lane: Global.Lane, type: int, screen_time: float) -> Node2D:
+	var instance: Node
+	if notes && bar:
+		instance = BACTERIA.instantiate()
+		instance.setup_note(lane, screen_time, bar.position.x, type)
+		instance.note_hit.connect(_on_note_hit)
+		instance.note_missed.connect(_on_note_missed)
+		notes.add_child(instance)
+	return instance
 
 func _on_note_hit(value: int, _quality: Global.Quality) -> void:
 	score += value
