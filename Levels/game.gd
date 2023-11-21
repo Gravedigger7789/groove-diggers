@@ -36,16 +36,18 @@ func _unhandled_input(event: InputEvent) -> void:
 func _spawn_notes(beat: int, screen_time: float) -> void:
 	var number_of_notes := int(beat_map.size() / song.beats_per_measure)
 	var note_slice := beat_map.slice(number_of_notes * beat, (number_of_notes * beat) + number_of_notes)
-	for note: String in note_slice:
-		var beat_map_note: Global.BeatMap = int(note)
+	#for note: String in note_slice:
+	for i in range(0, note_slice.size()):
+		var beat_map_note: Global.BeatMap = int(note_slice[i])
+		var beat_type: Global.Beat = i
 		match beat_map_note:
 			Global.BeatMap.TOP:
-				_spawn_note(Global.LANE.TOP, Global.BEAT.FULL, screen_time)
+				_spawn_note(Global.Lane.TOP, beat_type, screen_time)
 			Global.BeatMap.BOTTOM:
-				_spawn_note(Global.LANE.BOTTOM, Global.BEAT.FULL, screen_time)
+				_spawn_note(Global.Lane.BOTTOM, beat_type, screen_time)
 			Global.BeatMap.BOTH:
-				_spawn_note(Global.LANE.TOP, Global.BEAT.FULL, screen_time)
-				_spawn_note(Global.LANE.BOTTOM, Global.BEAT.FULL, screen_time)
+				_spawn_note(Global.Lane.TOP, beat_type, screen_time)
+				_spawn_note(Global.Lane.BOTTOM, beat_type, screen_time)
 			Global.BeatMap.BACTERIA:
 				pass # Spawn long bacteria until told not to
 			Global.BeatMap.END:
@@ -58,7 +60,7 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 	#instance.note_missed.connect(_on_note_missed)
 	#notes.add_child(instance)
 
-func _spawn_note(lane: Global.LANE, beat: Global.BEAT, screen_time: float) -> void:
+func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> void:
 	if notes && bar:
 		var instance := NOTE.instantiate()
 		instance.setup_note(lane, screen_time, bar.position.x, beat)
