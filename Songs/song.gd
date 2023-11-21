@@ -9,6 +9,7 @@ var measures : int
 var beats_per_measure : int
 var beat_map := []
 var initialized := false
+var offset := 0.0
 
 func _ready() -> void:
 	initialize()
@@ -21,6 +22,7 @@ func initialize() -> void:
 		bpm = song_data["bpm"]
 		measures = song_data["measures"]
 		beats_per_measure = song_data["beats_per_measure"]
+		offset = song_data["offset"]
 		beat_map = song_data["beat_map"]
 		initialized = true
 		print("song initialized")

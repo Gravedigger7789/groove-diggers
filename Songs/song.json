@@ -3,7 +3,7 @@
 	"bpm": 140,
 	"measures": 4,
 	"beats_per_measure": 4,
-	"song_offset": 0.021,
+	"offset": 0.021,
 	"beat_map": [
 		"2212",
 		"2212",
