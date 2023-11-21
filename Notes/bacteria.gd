@@ -18,6 +18,7 @@ func hit(hit_position: float) -> void:
 func _process(_delta: float) -> void:
 	var bacteria := get_tree().get_nodes_in_group("bacteria")
 	bacteria.erase(self)
+	found_bacteria_in_lane = false
 	for node in bacteria:
 		if node.current_lane == current_lane:
 			found_bacteria_in_lane = true
