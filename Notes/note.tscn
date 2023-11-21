@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://rfsrsv3c3ttv"]
+[gd_scene load_steps=10 format=3 uid="uid://rfsrsv3c3ttv"]
 
 [ext_resource type="Script" path="res://Notes/note.gd" id="1_ufaj4"]
 [ext_resource type="Texture2D" uid="uid://conkfqc22yeyo" path="res://Notes/gold-3.png" id="2_aepwc"]
 [ext_resource type="Texture2D" uid="uid://di0raams3ix36" path="res://Notes/gold-2.png" id="3_g3686"]
 [ext_resource type="Texture2D" uid="uid://d0e5a5vvm5544" path="res://Notes/gold-1.png" id="4_ci5u8"]
+[ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="5_skbga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2lo"]
 size = Vector2(64, 64)
@@ -33,6 +34,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QualityLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-41.5, -44)]
 }
 
 [sub_resource type="Animation" id="Animation_hag0v"]
@@ -76,6 +89,18 @@ tracks/2/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("QualityLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-41.5, -44), Vector2(-41.5, -88)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r0g54"]
 _data = {
@@ -99,5 +124,21 @@ shape = SubResource("RectangleShape2D_mt2lo")
 libraries = {
 "": SubResource("AnimationLibrary_r0g54")
 }
+
+[node name="QualityLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.5
+offset_top = -44.0
+offset_right = 41.5
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_skbga")
+text = "PERFECT"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
