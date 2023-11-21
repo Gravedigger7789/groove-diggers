@@ -30,7 +30,7 @@ func _ready() -> void:
 		current_beat = Global.Beat.FULL
 	sprite_2d.texture = beat_textures[current_beat]
 
-func setup_note(lane: int, screen_time: float, target_pos: float, beat: Global.Beat) -> void:
+func setup_note(lane: Global.Lane, screen_time: float, target_pos: float, beat: Global.Beat) -> void:
 	target_position = target_pos
 	target_time = screen_time
 	speed = (target_position - SPAWN_X) / target_time
