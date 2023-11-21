@@ -12,7 +12,7 @@ var speed : float
 var target_position: float
 var target_missed_offset := 64
 var colllected := false
-var current_beat: Global.BEAT
+var current_beat: Global.Beat
 
 @onready var time_start := Time.get_unix_time_from_system()
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -26,14 +26,14 @@ signal note_missed(value: int)
 func _ready() -> void:
 	sprite_2d.texture = beat_textures[current_beat]
 
-func setup_note(lane: int, screen_time: float, target_pos: float, beat: Global.BEAT) -> void:
+func setup_note(lane: int, screen_time: float, target_pos: float, beat: Global.Beat) -> void:
 	target_position = target_pos
 	speed = (target_position - SPAWN_X) / screen_time
 	current_beat = beat
 	match lane:
-		Global.LANE.TOP:
+		Global.Lane.TOP:
 			position = TOP_SPAWN
-		Global.LANE.BOTTOM:
+		Global.Lane.BOTTOM:
 			position = BOTTOM_SPAWN
 		_:
 			queue_free()
