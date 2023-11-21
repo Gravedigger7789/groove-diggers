@@ -37,6 +37,7 @@ func _process(_delta: float) -> void:
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
+		song_position -= song.offset # song offset
 		#song_position += (1 / COMPENSATE_HZ) * COMPENSATE_FRAMES
 		song_position_beats = int(song_position / seconds_per_beat) + beats_before_start + 1
 		#print("Song Position: ", song_position)
