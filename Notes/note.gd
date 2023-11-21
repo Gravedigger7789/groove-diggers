@@ -18,6 +18,7 @@ var current_beat: Global.Beat
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var quality_label: Label = $QualityLabel
 
 signal note_hit(value: int, quality: Global.Quality)
 signal note_missed(value: int)
@@ -68,4 +69,6 @@ func hit(hit_position: float) -> void:
 		hit_quality = Global.Quality.GOOD
 	note_hit.emit(100 * hit_quality, hit_quality)
 	colllected = true
+	quality_label.text = Global.Quality.keys()[hit_quality]
+	quality_label.show()
 	animation_player.play("collect")
