@@ -3,6 +3,7 @@ extends Note2D
 @onready var trailing_line_target := SPAWN_X
 
 var check_if_holding := false
+var found_bacteria_in_lane := false
 var line_color := Color.GOLD
 
 func hit(hit_position: float) -> void:
@@ -16,17 +17,22 @@ func hit(hit_position: float) -> void:
 func _process(_delta: float) -> void:
 	var bacteria := get_tree().get_nodes_in_group("bacteria")
 	bacteria.erase(self)
-	if bacteria.size() > 0:
-		if current_beat == 0:
-			trailing_line_target = bacteria[0].position.x - global_position.x
-			if trailing_line_target <= 0:
-				bacteria[0].queue_free()
-				animation_player.play("collect")
-			queue_redraw()
-	elif current_beat == 1:
+	for node in bacteria:
+		if node.current_lane == current_lane:
+			found_bacteria_in_lane = true
+			if current_beat == 0:
+				trailing_line_target = node.position.x - global_position.x
+				if trailing_line_target <= 0:
+					node.queue_free()
+					animation_player.play("collect")
+				queue_redraw()
+	if !found_bacteria_in_lane && current_beat == 1:
 		queue_free()
 	if check_if_holding:
-		if Input.is_action_just_released("hit_down"):
+		var action := "hit_up"
+		if current_lane == Global.Lane.BOTTOM:
+			action = "hit_down"
+		if Input.is_action_just_released(action):
 			speed = (target_position - SPAWN_X) / target_time
 			line_color = Color.RED
 			queue_redraw()

@@ -14,6 +14,7 @@ var target_missed_offset := 64
 var target_time: float
 var colllected := false
 var current_beat: Global.Beat
+var current_lane: Global.Lane
 
 @onready var time_start := Time.get_unix_time_from_system()
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -34,8 +35,9 @@ func setup_note(lane: Global.Lane, screen_time: float, target_pos: float, beat: 
 	target_position = target_pos
 	target_time = screen_time
 	speed = (target_position - SPAWN_X) / target_time
+	current_lane = lane
 	current_beat = beat
-	match lane:
+	match current_lane:
 		Global.Lane.TOP:
 			position = TOP_SPAWN
 		Global.Lane.BOTTOM:

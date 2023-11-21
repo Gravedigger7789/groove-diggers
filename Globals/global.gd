@@ -8,8 +8,9 @@ enum BeatMap
 	TOP = 1,
 	BOTTOM = 2,
 	BOTH = 3,
-	BACTERIA = 4,
-	END = 9
+	BACTERIA_TOP = 4,
+	BACTERIA_BOTTOM = 5,
+	BACTERIA_BOTH = 6
 }
 enum Quality 
 {
