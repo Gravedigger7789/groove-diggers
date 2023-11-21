@@ -23,8 +23,7 @@ func check_for_collision(raycast: RayCast2D) -> void:
 func get_raycast_collision_distance(raycast: RayCast2D) -> float:
 	var collision_distance := -1.0
 	if raycast.is_colliding():
-		var origin := raycast.global_transform.origin
 		var collision_point := raycast.get_collision_point()
-		collision_distance = origin.distance_to(collision_point)
+		collision_distance = collision_point.x
 	return collision_distance
 	
