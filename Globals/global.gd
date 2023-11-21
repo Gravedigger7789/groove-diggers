@@ -11,3 +11,10 @@ enum BeatMap
 	BACTERIA = 4,
 	END = 9
 }
+enum Quality 
+{
+	OK = 0, 
+	GOOD = 1,
+	GREAT = 2,
+	PERFECT = 3
+}

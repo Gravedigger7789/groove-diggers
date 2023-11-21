@@ -68,7 +68,7 @@ func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> vo
 		instance.note_missed.connect(_on_note_missed)
 		notes.add_child(instance)
 
-func _on_note_hit(value: int) -> void:
+func _on_note_hit(value: int, quality: Global.Quality) -> void:
 	score += value
 
 func _on_note_missed(value: int) -> void:
