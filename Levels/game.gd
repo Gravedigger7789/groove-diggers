@@ -38,8 +38,8 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 	var note_slice := beat_map.slice(number_of_notes * beat, (number_of_notes * beat) + number_of_notes)
 	#for note: String in note_slice:
 	for i in range(0, note_slice.size()):
-		var beat_map_note: Global.BeatMap = int(note_slice[i])
-		var beat_type: Global.Beat = i
+		var beat_map_note := note_slice[i] as Global.BeatMap
+		var beat_type := i as Global.Beat
 		match beat_map_note:
 			Global.BeatMap.TOP:
 				_spawn_note(Global.Lane.TOP, beat_type, screen_time)
