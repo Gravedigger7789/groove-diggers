@@ -99,7 +99,7 @@ func _on_note_missed(value: int) -> void:
 	player.damage(value)
 	combo = 0
 
-func _on_conductor_measure(measure_position: int) -> void:
+func _on_conductor_measure(measure_position: int, _song_length_measures: int) -> void:
 	var measure_look_ahead := int (BEATS_VISIBLE_ON_SCREEN / song.beats_per_measure) + measure_position
 	if song.beat_map.size() > measure_look_ahead:
 		var song_beat_map: String = song.beat_map[measure_look_ahead]

@@ -15,12 +15,13 @@ var play_from_position := 0.0
 var song_position := 0.0
 var song_position_beats := 1
 var song_length_beats := 0
+var song_length_measures := 0
 var last_reported_beat := -1
 var beats_before_start := 0
 var last_reported_measure := -1
 
 signal beat(position: int, seconds_per_beat: float, song_length_beats: int)
-signal measure(position: int)
+signal measure(position: int, song_length_measures: int)
 
 func _ready() -> void:
 	song.initialize()
@@ -30,6 +31,7 @@ func _ready() -> void:
 	measures = song.measures
 	stream = song.audio_stream
 	song_length_beats = int(stream.get_length() / seconds_per_beat)
+	song_length_measures = ceil(song_length_beats / measures)
 
 func _process(_delta: float) -> void:
 	if playing:
@@ -47,7 +49,7 @@ func _report_beat() -> void:
 		var current_measure := int((last_reported_beat - 1) / measures)
 		if last_reported_measure < current_measure:
 			last_reported_measure = current_measure
-			measure.emit(current_measure - (beats_before_start / measures))
+			measure.emit(current_measure - (beats_before_start / measures), song_length_measures)
 		var beat_number_in_measure := last_reported_beat - (beats_per_measure * (last_reported_measure))
 		beat.emit(beat_number_in_measure - 1, seconds_per_beat, song_length_beats)
 
