@@ -24,6 +24,8 @@ signal note_missed(value: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if beat_textures.size() < current_beat + 1:
+		current_beat = Global.Beat.FULL
 	sprite_2d.texture = beat_textures[current_beat]
 
 func setup_note(lane: int, screen_time: float, target_pos: float, beat: Global.Beat) -> void:
