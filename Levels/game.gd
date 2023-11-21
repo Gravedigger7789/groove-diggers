@@ -14,13 +14,21 @@ extends Node2D
 const NOTE := preload("res://Notes/note.tscn")
 const BEATS_VISIBLE_ON_SCREEN = 4.0
 
+var beat_map := []
 var score := 0 : 
 	set(value): 
 		score = value
 		gui.update_score(value)
 		game_over_menu.update_score(value)
-var beat_map := []
-
+var combo := 0 : 
+	set(value): 
+		combo = value
+		max_combo = max(value, max_combo)
+		gui.update_combo(value)
+var max_combo := 0 : 
+	set(value): 
+		max_combo = value
+		game_over_menu.update_combo(value)
 
 func _ready() -> void:
 	song.initialize()
@@ -70,9 +78,11 @@ func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> vo
 
 func _on_note_hit(value: int, quality: Global.Quality) -> void:
 	score += value
+	combo += 1
 
 func _on_note_missed(value: int) -> void:
 	player.damage(value)
+	combo = 0
 
 func _on_conductor_measure(measure_position: int) -> void:
 	var measure_look_ahead := int (BEATS_VISIBLE_ON_SCREEN / song.beats_per_measure) + measure_position
