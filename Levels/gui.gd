@@ -9,8 +9,8 @@ extends CanvasLayer
 var health : int
 var max_health : int
 
-var current_beat : int
-var max_beats := 1
+var current_measure : int
+var max_measures := 1
 
 func update_score(value: int) -> void:
 	score_label.text = "Gold: " + str(value)
@@ -27,9 +27,9 @@ func _process(_delta: float) -> void:
 		health_bar.max_value = max_health
 	health_bar.value = health
 
-	if song_progress.max_value != max_beats:
-		song_progress.max_value = max_beats
-	song_progress.value = current_beat
+	if song_progress.max_value != max_measures:
+		song_progress.max_value = max_measures
+	song_progress.value = current_measure
 
 func _on_dwarf_health_changed(new_health: int) -> void:
 	if new_health > max_health:
@@ -37,8 +37,8 @@ func _on_dwarf_health_changed(new_health: int) -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "health", new_health, 0.5)
 
-func _on_conductor_beat(position: int, seconds_per_beat: float, song_length_beats: int) -> void:
-	if song_length_beats > max_beats:
-		max_beats = song_length_beats
+func _on_conductor_measure(position: int, song_length_measures: int) -> void:
+	if song_length_measures > max_measures:
+		max_measures = song_length_measures
 	var tween := create_tween()
-	tween.tween_property(self, "current_beat", position, seconds_per_beat / 2)
+	tween.tween_property(self, "current_measure", position, 0.5)
