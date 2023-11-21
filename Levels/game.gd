@@ -15,6 +15,8 @@ const NOTE := preload("res://Notes/note.tscn")
 const BACTERIA = preload("res://Notes/bacteria.tscn")
 const BEATS_VISIBLE_ON_SCREEN = 4.0
 
+var bacteria_top_spawned := false
+var bacteria_bottom_spawned := false
 var beat_map := []
 var score := 0 : 
 	set(value): 
@@ -57,10 +59,17 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 			Global.BeatMap.BOTH:
 				_spawn_note(Global.Lane.TOP, beat_type, screen_time)
 				_spawn_note(Global.Lane.BOTTOM, beat_type, screen_time)
-			Global.BeatMap.BACTERIA:
-				_spawn_long_note(Global.Lane.BOTTOM, 0, screen_time)
-			Global.BeatMap.END:
-				_spawn_long_note(Global.Lane.BOTTOM, 1, screen_time)
+			Global.BeatMap.BACTERIA_TOP:
+				_spawn_long_note(Global.Lane.TOP, int(bacteria_top_spawned), screen_time)
+				bacteria_top_spawned =! bacteria_top_spawned
+			Global.BeatMap.BACTERIA_BOTTOM:
+				_spawn_long_note(Global.Lane.BOTTOM, int(bacteria_bottom_spawned), screen_time)
+				bacteria_bottom_spawned =! bacteria_bottom_spawned
+			Global.BeatMap.BACTERIA_BOTH:
+				_spawn_long_note(Global.Lane.TOP, int(bacteria_top_spawned), screen_time)
+				bacteria_top_spawned =! bacteria_top_spawned
+				_spawn_long_note(Global.Lane.BOTTOM, int(bacteria_bottom_spawned), screen_time)
+				bacteria_bottom_spawned =! bacteria_bottom_spawned
 		await get_tree().create_timer(conductor.seconds_per_beat / note_slice.size()).timeout
 
 
