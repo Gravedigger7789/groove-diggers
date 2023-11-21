@@ -27,6 +27,7 @@ func _process(_delta: float) -> void:
 				if trailing_line_target <= 0:
 					node.queue_free()
 					note_hit.emit(100 * hit_quality, hit_quality)
+					colllected = true
 					animation_player.play("collect")
 				queue_redraw()
 	if !found_bacteria_in_lane && current_beat == 1:
