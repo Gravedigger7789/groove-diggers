@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @onready var score_label: Label = %Score
+@onready var combo_container: VBoxContainer = %ComboContainer
+@onready var combo_label: Label = %Combo
 @onready var health_bar: ProgressBar = %Health
 @onready var song_progress: ProgressBar = %SongProgress
 
@@ -12,6 +14,13 @@ var max_beats := 1
 
 func update_score(value: int) -> void:
 	score_label.text = "Gold: " + str(value)
+
+func update_combo(value: int) -> void:
+	if value > 1:
+		combo_label.text = str(value)
+		combo_container.show()
+	else:
+		combo_container.hide()
 
 func _process(_delta: float) -> void:
 	if health_bar.max_value != max_health:
