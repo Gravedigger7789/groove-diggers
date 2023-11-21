@@ -4,11 +4,12 @@ extends Note2D
 
 var check_if_holding := false
 var found_bacteria_in_lane := false
+var hit_quality := Global.Quality.OK
 var line_color := Color.GOLD
 
 func hit(hit_position: float) -> void:
 	speed = 0
-	var hit_quality := calculate_hit_quality(hit_position, Time.get_unix_time_from_system())
+	hit_quality = calculate_hit_quality(hit_position, Time.get_unix_time_from_system())
 	note_hit.emit(100 * hit_quality, hit_quality)
 	quality_label.text = Global.Quality.keys()[hit_quality]
 	animation_player.play("hit")
@@ -24,6 +25,7 @@ func _process(_delta: float) -> void:
 				trailing_line_target = node.position.x - global_position.x
 				if trailing_line_target <= 0:
 					node.queue_free()
+					note_hit.emit(100 * hit_quality, hit_quality)
 					animation_player.play("collect")
 				queue_redraw()
 	if !found_bacteria_in_lane && current_beat == 1:
