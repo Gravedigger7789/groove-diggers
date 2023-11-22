@@ -39,7 +39,7 @@ func _ready() -> void:
 	background.speed = (bar.position.x - 672) / (conductor.seconds_per_beat * BEATS_VISIBLE_ON_SCREEN)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") && !game_over_menu.visible:
 		get_viewport().set_input_as_handled()
 		pause_menu.show()
 		get_tree().paused = true
