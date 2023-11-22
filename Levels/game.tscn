@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhqq5styaiu4x"]
+[gd_scene load_steps=20 format=3 uid="uid://bhqq5styaiu4x"]
 
 [ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
 [ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
@@ -11,14 +11,46 @@
 [ext_resource type="PackedScene" uid="uid://cj4mr0cwfmfi7" path="res://Levels/pause_menu.tscn" id="8_q3rug"]
 [ext_resource type="AudioStream" uid="uid://cs8r2ktf587ob" path="res://Songs/fanfare.ogg" id="10_bqi1n"]
 
+[sub_resource type="Gradient" id="Gradient_7sjc3"]
+colors = PackedColorArray(0.784314, 0.784314, 0.647059, 1, 0.156863, 0.156863, 0.156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mmrdj"]
+gradient = SubResource("Gradient_7sjc3")
+width = 640
+height = 360
+
+[sub_resource type="Gradient" id="Gradient_oe5sg"]
+colors = PackedColorArray(0.156863, 0.156863, 0.156863, 1, 0.156863, 0.156863, 0.156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jnpy8"]
+gradient = SubResource("Gradient_oe5sg")
+width = 640
+height = 360
+
+[sub_resource type="Gradient" id="Gradient_xn43c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bljej"]
+gradient = SubResource("Gradient_xn43c")
+width = 640
+height = 360
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_61s8x"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_3ib50"]
+colors = PackedColorArray(0.784314, 0.784314, 0.647059, 1, 0.156863, 0.156863, 0.156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_roijj"]
+gradient = SubResource("Gradient_3ib50")
+width = 640
+height = 360
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_brnva")
-
-[node name="Sun" type="DirectionalLight2D" parent="."]
-energy = 0.7
-blend_mode = 1
-range_layer_min = -200
-range_layer_max = 1
+sun_alive = SubResource("GradientTexture2D_mmrdj")
+sun_dead = SubResource("GradientTexture2D_jnpy8")
+sun_success = SubResource("GradientTexture2D_bljej")
 
 [node name="Background" parent="." instance=ExtResource("2_v2m40")]
 
@@ -30,6 +62,13 @@ data_path = "res://Songs/song.json"
 
 [node name="Dwarf" parent="." instance=ExtResource("6_ovpxb")]
 position = Vector2(80, 200)
+
+[node name="FakeLightLayer" type="CanvasLayer" parent="."]
+
+[node name="Sun" type="Sprite2D" parent="FakeLightLayer"]
+material = SubResource("CanvasItemMaterial_61s8x")
+texture = SubResource("GradientTexture2D_roijj")
+centered = false
 
 [node name="GUI" parent="." instance=ExtResource("6_n3u1a")]
 

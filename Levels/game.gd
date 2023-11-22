@@ -1,5 +1,10 @@
 extends Node2D
 
+@export var sun_alive: Texture
+@export var sun_dead: Texture
+@export var sun_success: Texture
+
+@onready var sun: Sprite2D = $FakeLightLayer/Sun
 @onready var conductor: AudioStreamPlayer = $Conductor
 @onready var song: Song = $Song
 @onready var background: Node2D = $Background
@@ -9,7 +14,6 @@ extends Node2D
 @onready var pause_menu: CanvasLayer = $PauseMenu
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 @onready var gui: CanvasLayer = $GUI
-@onready var sun: DirectionalLight2D = $Sun
 @onready var game_over: AudioStreamPlayer = $GameOver
 
 const NOTE := preload("res://Notes/note.tscn")
@@ -35,6 +39,7 @@ var max_combo := 0 :
 		game_over_menu.update_combo(value)
 
 func _ready() -> void:
+	sun.texture = sun_alive
 	song.initialize()
 	conductor.play_song(BEATS_VISIBLE_ON_SCREEN)
 	background.speed = (bar.position.x - 672) / (conductor.seconds_per_beat * BEATS_VISIBLE_ON_SCREEN)
@@ -118,8 +123,7 @@ func _on_dwarf_death() -> void:
 	conductor.stop()
 	background.speed = 0
 	notes.queue_free()
-	var tween := create_tween()
-	tween.tween_property(sun, "energy", 0.9, 1.0)
+	sun.texture = sun_dead
 	await get_tree().create_timer(1.0).timeout
 	gui.hide()
 	game_over_menu.show()
@@ -130,8 +134,7 @@ func _on_conductor_finished() -> void:
 	background.speed = 0
 	notes.queue_free()
 	player.celebrate()
-	var tween := create_tween()
-	tween.tween_property(sun, "energy", 0.1, 1.0)
+	sun.texture = sun_success
 	await get_tree().create_timer(1.0).timeout
 	gui.hide()
 	game_over_menu.show()

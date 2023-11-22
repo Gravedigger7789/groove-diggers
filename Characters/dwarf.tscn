@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=41 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
 [ext_resource type="Texture2D" uid="uid://c480amu2yhoq3" path="res://Characters/dwarf-hit-up-torso.png" id="2_6x7x0"]
@@ -243,12 +243,17 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x6o4x"]
+blend_mode = 3
+
 [sub_resource type="Gradient" id="Gradient_op2qr"]
-offsets = PackedFloat32Array(0, 0.701031)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.742268)
+colors = PackedColorArray(1, 1, 0.235294, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_84t8e"]
 gradient = SubResource("Gradient_op2qr")
+width = 192
+height = 192
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -257,7 +262,7 @@ script = ExtResource("1_kej81")
 
 [node name="Torso" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-animation = &"celebrate"
+animation = &"run"
 autoplay = "run"
 
 [node name="Legs" type="AnimatedSprite2D" parent="."]
@@ -265,18 +270,14 @@ sprite_frames = SubResource("SpriteFrames_r26xj")
 animation = &"run"
 autoplay = "run"
 
-[node name="Torch" type="PointLight2D" parent="."]
-position = Vector2(32, -34)
-color = Color(1, 0.992157, 0.227451, 1)
-energy = 0.75
-range_layer_min = -200
-range_layer_max = 100
-texture = SubResource("GradientTexture2D_84t8e")
-texture_scale = 3.0
-
 [node name="FallTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="Torch" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_x6o4x")
+position = Vector2(32, -34)
+texture = SubResource("GradientTexture2D_84t8e")
 
 [connection signal="animation_finished" from="Torso" to="." method="_on_torso_animation_finished"]
 [connection signal="timeout" from="FallTimer" to="." method="_on_fall_timer_timeout"]

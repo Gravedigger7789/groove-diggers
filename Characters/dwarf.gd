@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var torso: AnimatedSprite2D = $Torso
 @onready var legs: AnimatedSprite2D = $Legs
-@onready var torch: PointLight2D = $Torch
+@onready var torch: Sprite2D = $Torch
 @onready var fall_timer: Timer = $FallTimer
 
 var top_position := -100.0
@@ -87,8 +87,7 @@ func damage(value: int) -> void:
 			torso.play("death")
 			legs.stop()
 			legs.hide()
-			var tween := create_tween()
-			tween.tween_property(torch, "energy", 0, 1.0)
+			torch.hide()
 			death.emit()
 		elif !torso.animation.contains("damage"):
 			torso.play("damage")
@@ -108,5 +107,4 @@ func celebrate() -> void:
 	torso.play("celebrate")
 	legs.stop()
 	legs.hide()
-	var tween := create_tween()
-	tween.tween_property(torch, "energy", 0, 1.0)
+	torch.hide()
