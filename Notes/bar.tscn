@@ -8,9 +8,7 @@ position = Vector2(160, 180)
 script = ExtResource("1_5r15v")
 
 [node name="TopNoteSprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.564706)
-position = Vector2(0, -68)
-scale = Vector2(2, 2)
+position = Vector2(0, -84)
 texture = ExtResource("2_ydvqm")
 region_enabled = true
 region_rect = Rect2(65, 64, 30, 31)
@@ -21,9 +19,7 @@ target_position = Vector2(96, 0)
 collide_with_areas = true
 
 [node name="BottomNoteSprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.564706)
-position = Vector2(0, 68)
-scale = Vector2(2, 2)
+position = Vector2(0, 84)
 texture = ExtResource("2_ydvqm")
 region_enabled = true
 region_rect = Rect2(225, 65, 30, 31)
