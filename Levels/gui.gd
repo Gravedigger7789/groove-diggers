@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var combo_label: Label = %Combo
 @onready var health_bar: ProgressBar = %Health
 @onready var song_progress: ProgressBar = %SongProgress
+@onready var health_empty: TextureRect = %Empty
+@onready var health_33: TextureRect = %"33"
+@onready var health_66: TextureRect = %"66"
+@onready var health_full: TextureRect = %Full
 
 var health : int
 var max_health : int
@@ -34,6 +38,15 @@ func _process(_delta: float) -> void:
 func _on_dwarf_health_changed(new_health: int) -> void:
 	if new_health > max_health:
 		max_health = new_health
+	var health_percent := new_health / float(max_health)
+	if health_percent <= 0.9:
+		health_full.modulate = Color(0.4, 0.4, 0.4, 1)
+	if health_percent <= 0.6:
+		health_66.modulate = Color(0.4, 0.4, 0.4, 1)
+	if health_percent <= 0.3:
+		health_33.modulate = Color(0.4, 0.4, 0.4, 1)
+	if health_percent <= 0:
+		health_empty.modulate = Color(0.4, 0.4, 0.4, 1)
 	var tween := create_tween()
 	tween.tween_property(self, "health", new_health, 0.5)
 
