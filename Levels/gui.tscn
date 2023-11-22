@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgq3y3yhtfsl6"]
+[gd_scene load_steps=15 format=3 uid="uid://cgq3y3yhtfsl6"]
 
 [ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="1_bvkj8"]
 [ext_resource type="Script" path="res://Levels/gui.gd" id="1_hd50e"]
 [ext_resource type="Texture2D" uid="uid://dj6t1dapsfalh" path="res://Levels/health_icons.png" id="3_3ms6y"]
+[ext_resource type="Texture2D" uid="uid://1ark1n880f0g" path="res://Notes/hitboxes.png" id="4_wsjfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xutww"]
 bg_color = Color(0, 0, 0, 0.564706)
@@ -48,6 +49,14 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 1
 corner_detail = 2
 anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0fca"]
+atlas = ExtResource("4_wsjfo")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f20x4"]
+atlas = ExtResource("4_wsjfo")
+region = Rect2(224, 64, 32, 32)
 
 [node name="GUI" type="CanvasLayer"]
 layer = 10
@@ -160,3 +169,17 @@ theme_override_styles/background = SubResource("StyleBoxFlat_f4bwv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pmkw6")
 value = 25.0
 show_percentage = false
+
+[node name="HitUpButton" type="TouchScreenButton" parent="Control"]
+position = Vector2(90, 280)
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_f0fca")
+action = "hit_up"
+visibility_mode = 1
+
+[node name="HitDownButton" type="TouchScreenButton" parent="Control"]
+position = Vector2(486, 280)
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_f20x4")
+action = "hit_down"
+visibility_mode = 1
