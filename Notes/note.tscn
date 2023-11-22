@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://rfsrsv3c3ttv"]
+[gd_scene load_steps=10 format=3 uid="uid://rfsrsv3c3ttv"]
 
 [ext_resource type="Script" path="res://Notes/note.gd" id="1_ufaj4"]
 [ext_resource type="Texture2D" uid="uid://conkfqc22yeyo" path="res://Notes/gold-3.png" id="2_aepwc"]
@@ -114,69 +114,10 @@ tracks/3/keys = {
 "values": [Vector2(-41.5, -44), Vector2(-41.5, -88)]
 }
 
-[sub_resource type="Animation" id="Animation_gw8qk"]
-resource_name = "hit"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("QualityLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-41.5, -44), Vector2(-41.5, -88)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("QualityLabel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_ummaw"]
-resource_name = "spin"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r0g54"]
 _data = {
 "RESET": SubResource("Animation_qjbvb"),
-"collect": SubResource("Animation_hag0v"),
-"hit": SubResource("Animation_gw8qk"),
-"spin": SubResource("Animation_ummaw")
+"collect": SubResource("Animation_hag0v")
 }
 
 [node name="Note" type="Area2D"]

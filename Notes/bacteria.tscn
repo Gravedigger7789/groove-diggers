@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://7daabo0njsro"]
+[gd_scene load_steps=13 format=3 uid="uid://7daabo0njsro"]
 
 [ext_resource type="Script" path="res://Notes/bacteria.gd" id="1_fl6ei"]
 [ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="2_232dd"]
 [ext_resource type="Texture2D" uid="uid://b1gs022vj36t8" path="res://Notes/bacteria-1.png" id="2_c7elg"]
 [ext_resource type="Texture2D" uid="uid://brgfd6wthl8h" path="res://Notes/bacteria-2.png" id="3_hpqvh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c5scl"]
+load_path = "res://.godot/imported/bacteria-1.png-19ce50e7cfe477ed61e5dc06c3f06ed1.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2lo"]
 size = Vector2(64, 64)
@@ -57,6 +60,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_c5scl")]
 }
 
 [sub_resource type="Animation" id="Animation_hag0v"]
@@ -170,11 +185,28 @@ tracks/0/keys = {
 "values": [0.0, 6.28319]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r0g54"]
+[sub_resource type="Animation" id="Animation_t4bv1"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_c5scl"), ExtResource("3_hpqvh")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ty7d2"]
 _data = {
 "RESET": SubResource("Animation_qjbvb"),
 "collect": SubResource("Animation_hag0v"),
 "hit": SubResource("Animation_gw8qk"),
+"idle": SubResource("Animation_t4bv1"),
 "spin": SubResource("Animation_ummaw")
 }
 
@@ -183,7 +215,7 @@ script = ExtResource("1_fl6ei")
 beat_textures = Array[Texture]([ExtResource("2_c7elg"), ExtResource("3_hpqvh")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_c7elg")
+texture = SubResource("CompressedTexture2D_c5scl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mt2lo")
@@ -192,8 +224,9 @@ shape = SubResource("RectangleShape2D_mt2lo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_r0g54")
+"": SubResource("AnimationLibrary_ty7d2")
 }
+autoplay = "idle"
 
 [node name="QualityLabel" type="Label" parent="."]
 visible = false
