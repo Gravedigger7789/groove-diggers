@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgq3y3yhtfsl6"]
+[gd_scene load_steps=17 format=3 uid="uid://cgq3y3yhtfsl6"]
 
 [ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="1_bvkj8"]
 [ext_resource type="Script" path="res://Levels/gui.gd" id="1_hd50e"]
@@ -54,9 +54,15 @@ anti_aliasing = false
 atlas = ExtResource("4_wsjfo")
 region = Rect2(64, 64, 32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frtk2"]
+size = Vector2(140, 140)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f20x4"]
 atlas = ExtResource("4_wsjfo")
 region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3rbf"]
+size = Vector2(140, 140)
 
 [node name="GUI" type="CanvasLayer"]
 layer = 10
@@ -189,6 +195,7 @@ show_percentage = false
 position = Vector2(90, 280)
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_f0fca")
+shape = SubResource("RectangleShape2D_frtk2")
 action = "hit_up"
 visibility_mode = 1
 
@@ -196,5 +203,6 @@ visibility_mode = 1
 position = Vector2(486, 280)
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_f20x4")
+shape = SubResource("RectangleShape2D_s3rbf")
 action = "hit_down"
 visibility_mode = 1
