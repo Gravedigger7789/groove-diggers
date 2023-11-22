@@ -19,7 +19,7 @@ target_position = Vector2(96, 0)
 collide_with_areas = true
 
 [node name="BottomNoteSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 86)
+position = Vector2(0, 85)
 texture = ExtResource("2_ydvqm")
 region_enabled = true
 region_rect = Rect2(225, 65, 30, 31)
