@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhqq5styaiu4x"]
+[gd_scene load_steps=11 format=3 uid="uid://bhqq5styaiu4x"]
 
 [ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
 [ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c6yt0hfmum3nn" path="res://Characters/dwarf.tscn" id="6_ovpxb"]
 [ext_resource type="PackedScene" uid="uid://6mxlmv18fmdl" path="res://Levels/game_over_menu.tscn" id="8_hp7pg"]
 [ext_resource type="PackedScene" uid="uid://cj4mr0cwfmfi7" path="res://Levels/pause_menu.tscn" id="8_q3rug"]
+[ext_resource type="AudioStream" uid="uid://cs8r2ktf587ob" path="res://Songs/fanfare.ogg" id="10_bqi1n"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_brnva")
@@ -42,6 +43,9 @@ visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_q3rug")]
 visible = false
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bqi1n")
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]

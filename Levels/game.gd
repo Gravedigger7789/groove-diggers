@@ -10,6 +10,7 @@ extends Node2D
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 @onready var gui: CanvasLayer = $GUI
 @onready var sun: DirectionalLight2D = $Sun
+@onready var game_over: AudioStreamPlayer = $GameOver
 
 const NOTE := preload("res://Notes/note.tscn")
 const BACTERIA = preload("res://Notes/bacteria.tscn")
@@ -125,6 +126,7 @@ func _on_dwarf_death() -> void:
 
 
 func _on_conductor_finished() -> void:
+	game_over.play()
 	background.speed = 0
 	notes.queue_free()
 	player.celebrate()
