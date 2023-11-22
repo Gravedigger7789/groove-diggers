@@ -7,6 +7,11 @@ var found_bacteria_in_lane := false
 var hit_quality := Global.Quality.OK
 var line_color := Color.GOLD
 
+func _ready() -> void:
+	super._ready()
+	if current_beat == 1:
+		collision_shape_2d.disabled = true
+
 func hit(hit_position: float) -> void:
 	speed = 0
 	hit_quality = calculate_hit_quality(hit_position, Time.get_unix_time_from_system())
