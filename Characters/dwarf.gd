@@ -29,7 +29,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var now := Time.get_ticks_msec()
 
-	if Input.is_action_just_pressed("hit_up"):
+	if Input.is_action_pressed("hit_up"):
 		if down_click_time > 0:
 			if now - down_click_time < click_tolerance:
 				torso.play("hit-up")
@@ -39,10 +39,10 @@ func _process(_delta: float) -> void:
 			position.y = top_position
 		up_click_time = now
 
-	if Input.is_action_just_released("hit_up"):
+	if !Input.is_action_pressed("hit_up"):
 		up_click_time = 0.0
 
-	if Input.is_action_just_pressed("hit_down"):
+	if Input.is_action_pressed("hit_down"):
 		if up_click_time > 0:
 			if now - up_click_time < click_tolerance:
 				torso.play("hit-up")
@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 			position.y = bottom_position
 		down_click_time = now
 
-	if Input.is_action_just_released("hit_down"):
+	if !Input.is_action_pressed("hit_down"):
 		down_click_time = 0.0
 
 	sync_legs_with_torso()
