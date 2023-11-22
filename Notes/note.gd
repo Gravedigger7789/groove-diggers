@@ -31,7 +31,7 @@ func _ready() -> void:
 	if beat_textures.size() < current_beat + 1:
 		current_beat = Global.Beat.FULL
 	sprite_2d.texture = beat_textures[current_beat]
-	audio_stream_player.pitch_scale = 1 + (current_beat * 0.25)
+	audio_stream_player.pitch_scale = 1.75 + (current_beat * 0.25)
 
 func setup_note(lane: Global.Lane, screen_time: float, target_pos: float, beat: Global.Beat) -> void:
 	target_position = target_pos
