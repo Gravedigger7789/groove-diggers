@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://d17yrkgds8idi" path="res://Levels/roof.png" id="4_8ci4q"]
 [ext_resource type="Texture2D" uid="uid://6nb3fg5i7kb2" path="res://Levels/tounge.png" id="5_3vtg3"]
 [ext_resource type="Texture2D" uid="uid://bc4otfowagyeo" path="res://Levels/gum-tile-alt.png" id="6_4csmd"]
-[ext_resource type="Texture2D" uid="uid://vuoi4wc0enp3" path="res://Notes/tooth-1.png" id="7_dqkme"]
+[ext_resource type="Texture2D" uid="uid://vuoi4wc0enp3" path="res://Levels/tooth-1.png" id="7_dqkme"]
 [ext_resource type="Texture2D" uid="uid://cyuwj0equhf1r" path="res://Levels/gum-tile.png" id="7_msf5t"]
-[ext_resource type="Texture2D" uid="uid://b1iim5aihxaea" path="res://Notes/tooth-3.png" id="8_yctlw"]
-[ext_resource type="Texture2D" uid="uid://wkk2rb3i5b24" path="res://Notes/tooth-2.png" id="9_d8ngf"]
-[ext_resource type="Texture2D" uid="uid://d1n1ocgkddean" path="res://Notes/tooth-5.png" id="10_pl50w"]
-[ext_resource type="Texture2D" uid="uid://8hnewo3hdryi" path="res://Notes/tooth-4.png" id="11_qnh65"]
+[ext_resource type="Texture2D" uid="uid://b1iim5aihxaea" path="res://Levels/tooth-3.png" id="8_yctlw"]
+[ext_resource type="Texture2D" uid="uid://wkk2rb3i5b24" path="res://Levels/tooth-2.png" id="9_d8ngf"]
+[ext_resource type="Texture2D" uid="uid://d1n1ocgkddean" path="res://Levels/tooth-5.png" id="10_pl50w"]
+[ext_resource type="Texture2D" uid="uid://8hnewo3hdryi" path="res://Levels/tooth-4.png" id="11_qnh65"]
 
 [node name="Mouth" type="Node2D"]
 script = ExtResource("1_yajkf")
@@ -59,7 +59,7 @@ stretch_mode = 1
 position = Vector2(0, 296)
 
 [node name="Tooth-1" type="Sprite2D" parent="Background/BottomFront/Teeth"]
-position = Vector2(32, 0)
+position = Vector2(27, 0)
 texture = ExtResource("7_dqkme")
 
 [node name="Tooth-3" type="Sprite2D" parent="Background/BottomFront/Teeth"]
@@ -67,7 +67,7 @@ position = Vector2(138, 0)
 texture = ExtResource("8_yctlw")
 
 [node name="Tooth-2" type="Sprite2D" parent="Background/BottomFront/Teeth"]
-position = Vector2(85, 0)
+position = Vector2(82, 0)
 texture = ExtResource("9_d8ngf")
 
 [node name="Tooth-5" type="Sprite2D" parent="Background/BottomFront/Teeth"]
@@ -75,7 +75,7 @@ position = Vector2(352, 0)
 texture = ExtResource("10_pl50w")
 
 [node name="Tooth-7" type="Sprite2D" parent="Background/BottomFront/Teeth"]
-position = Vector2(408, 0)
+position = Vector2(411, 0)
 texture = ExtResource("7_dqkme")
 
 [node name="Tooth-8" type="Sprite2D" parent="Background/BottomFront/Teeth"]
@@ -114,7 +114,7 @@ position = Vector2(0, 64)
 scale = Vector2(1, -1)
 
 [node name="Tooth-1" type="Sprite2D" parent="Background/TopFront/Teeth"]
-position = Vector2(32, 0)
+position = Vector2(27, 0)
 texture = ExtResource("7_dqkme")
 
 [node name="Tooth-3" type="Sprite2D" parent="Background/TopFront/Teeth"]
@@ -122,7 +122,7 @@ position = Vector2(138, 0)
 texture = ExtResource("8_yctlw")
 
 [node name="Tooth-2" type="Sprite2D" parent="Background/TopFront/Teeth"]
-position = Vector2(85, 0)
+position = Vector2(82, 0)
 texture = ExtResource("9_d8ngf")
 
 [node name="Tooth-5" type="Sprite2D" parent="Background/TopFront/Teeth"]
@@ -130,7 +130,7 @@ position = Vector2(352, 0)
 texture = ExtResource("10_pl50w")
 
 [node name="Tooth-7" type="Sprite2D" parent="Background/TopFront/Teeth"]
-position = Vector2(408, 0)
+position = Vector2(411, 0)
 texture = ExtResource("7_dqkme")
 
 [node name="Tooth-8" type="Sprite2D" parent="Background/TopFront/Teeth"]

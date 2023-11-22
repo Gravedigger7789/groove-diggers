@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wkk2rb3i5b24"
-path="res://.godot/imported/tooth-2.png-119eb395dc37851c8a370cdbc6aee715.ctex"
+uid="uid://vuoi4wc0enp3"
+path="res://.godot/imported/tooth-1.png-277d5f892f2412afc8ee997f1ae9dc7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Notes/tooth-2.png"
-dest_files=["res://.godot/imported/tooth-2.png-119eb395dc37851c8a370cdbc6aee715.ctex"]
+source_file="res://Levels/tooth-1.png"
+dest_files=["res://.godot/imported/tooth-1.png-277d5f892f2412afc8ee997f1ae9dc7d.ctex"]
 
 [params]
 
