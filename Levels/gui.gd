@@ -30,6 +30,7 @@ func _process(_delta: float) -> void:
 	if health_bar.max_value != max_health:
 		health_bar.max_value = max_health
 	health_bar.value = health
+	update_health_icons()
 
 	if song_progress.max_value != max_measures:
 		song_progress.max_value = max_measures
@@ -38,15 +39,6 @@ func _process(_delta: float) -> void:
 func _on_dwarf_health_changed(new_health: int) -> void:
 	if new_health > max_health:
 		max_health = new_health
-	var health_percent := new_health / float(max_health)
-	if health_percent <= 0.9:
-		health_full.modulate = Color(0.4, 0.4, 0.4, 1)
-	if health_percent <= 0.6:
-		health_66.modulate = Color(0.4, 0.4, 0.4, 1)
-	if health_percent <= 0.3:
-		health_33.modulate = Color(0.4, 0.4, 0.4, 1)
-	if health_percent <= 0:
-		health_empty.modulate = Color(0.4, 0.4, 0.4, 1)
 	var tween := create_tween()
 	tween.tween_property(self, "health", new_health, 0.5)
 
@@ -55,3 +47,24 @@ func _on_conductor_measure(position: int, song_length_measures: int) -> void:
 		max_measures = song_length_measures
 	var tween := create_tween()
 	tween.tween_property(self, "current_measure", position, 0.5)
+
+func update_health_icons() -> void:
+	var health_percent := health / float(max_health)
+	var full_color := Color(1, 1, 1, 1)
+	var empty_color := Color(0.4, 0.4, 0.4, 1)
+	if health_percent >= 0.99:
+		health_full.modulate = full_color
+	else:
+		health_full.modulate = empty_color
+	if health_percent >= 0.66:
+		health_66.modulate = full_color
+	else:
+		health_66.modulate = empty_color
+	if health_percent >= 0.33:
+		health_33.modulate = full_color
+	else:
+		health_33.modulate = empty_color
+	if health_percent >= 0:
+		health_empty.modulate = full_color
+	else:
+		health_empty.modulate = empty_color

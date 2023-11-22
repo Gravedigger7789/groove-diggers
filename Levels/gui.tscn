@@ -145,21 +145,25 @@ theme_override_constants/separation = 64
 
 [node name="Empty" type="TextureRect" parent="Control/VBoxContainer/HealthContainer/HealthIcons"]
 unique_name_in_owner = true
+modulate = Color(0.4, 0.4, 0.4, 1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_han4u")
 
 [node name="33" type="TextureRect" parent="Control/VBoxContainer/HealthContainer/HealthIcons"]
 unique_name_in_owner = true
+modulate = Color(0.4, 0.4, 0.4, 1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_kotmg")
 
 [node name="66" type="TextureRect" parent="Control/VBoxContainer/HealthContainer/HealthIcons"]
 unique_name_in_owner = true
+modulate = Color(0.4, 0.4, 0.4, 1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_jydmr")
 
 [node name="Full" type="TextureRect" parent="Control/VBoxContainer/HealthContainer/HealthIcons"]
 unique_name_in_owner = true
+modulate = Color(0.4, 0.4, 0.4, 1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_aywo6")
 
