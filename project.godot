@@ -13,7 +13,7 @@ config_version=5
 config/name="groove-diggers"
 run/main_scene="res://Levels/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-run/max_fps=180
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -90,11 +90,6 @@ pause={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
-
-[physics]
-
-common/physics_ticks_per_second=180
-common/physics_jitter_fix=0.0
 
 [rendering]
 
