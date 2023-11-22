@@ -128,7 +128,7 @@ theme_override_constants/separation = -42
 
 [node name="Health" type="ProgressBar" parent="Control/VBoxContainer/HealthContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 15)
+custom_minimum_size = Vector2(300, 12)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
