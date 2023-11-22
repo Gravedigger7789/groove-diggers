@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var fps: Label = %FPS
 @onready var score_label: Label = %Score
 @onready var combo_container: VBoxContainer = %ComboContainer
 @onready var combo_label: Label = %Combo
@@ -27,6 +28,7 @@ func update_combo(value: int) -> void:
 		combo_container.hide()
 
 func _process(_delta: float) -> void:
+	fps.text = "FPS: %d" % Engine.get_frames_per_second()
 	if health_bar.max_value != max_health:
 		health_bar.max_value = max_health
 	health_bar.value = health
