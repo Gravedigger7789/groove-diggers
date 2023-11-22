@@ -100,3 +100,13 @@ func _on_torso_animation_finished() -> void:
 
 func _on_fall_timer_timeout() -> void:
 	position.y = bottom_position
+
+func celebrate() -> void:
+	set_process(false)
+	set_process_input(false)
+	position.y = bottom_position
+	torso.play("celebrate")
+	legs.stop()
+	legs.hide()
+	var tween := create_tween()
+	tween.tween_property(torch, "energy", 0, 1.0)

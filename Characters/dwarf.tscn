@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=40 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
 [ext_resource type="Texture2D" uid="uid://c480amu2yhoq3" path="res://Characters/dwarf-hit-up-torso.png" id="2_6x7x0"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b8g4n18i7u7i3" path="res://Characters/dwarf-run-legs.png" id="4_rje2y"]
 [ext_resource type="Texture2D" uid="uid://bmrn1q4l7uraf" path="res://Characters/dwarf-hit-mid-torso.png" id="5_8s8nq"]
 [ext_resource type="Texture2D" uid="uid://c3l2f62a1kpvi" path="res://Characters/dwarf-jump-legs.png" id="8_wd7q2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2agxo"]
+atlas = ExtResource("3_qccxk")
+region = Rect2(0, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v174y"]
 atlas = ExtResource("2_rcwvd")
@@ -88,6 +92,14 @@ region = Rect2(640, 0, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ww0jq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2agxo")
+}],
+"loop": true,
+"name": &"celebrate",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v174y")
@@ -245,7 +257,7 @@ script = ExtResource("1_kej81")
 
 [node name="Torso" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-animation = &"hit-mid"
+animation = &"celebrate"
 autoplay = "run"
 
 [node name="Legs" type="AnimatedSprite2D" parent="."]

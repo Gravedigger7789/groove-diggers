@@ -44,6 +44,7 @@ visible = false
 visible = false
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
 [connection signal="measure" from="Conductor" to="GUI" method="_on_conductor_measure"]
 [connection signal="death" from="Dwarf" to="." method="_on_dwarf_death"]

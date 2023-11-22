@@ -122,3 +122,14 @@ func _on_dwarf_death() -> void:
 	await get_tree().create_timer(1.0).timeout
 	gui.hide()
 	game_over_menu.show()
+
+
+func _on_conductor_finished() -> void:
+	background.speed = 0
+	notes.queue_free()
+	player.celebrate()
+	var tween := create_tween()
+	tween.tween_property(sun, "energy", 0.1, 1.0)
+	await get_tree().create_timer(1.0).timeout
+	gui.hide()
+	game_over_menu.show()
