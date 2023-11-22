@@ -4,8 +4,8 @@ extends Node2D
 @onready var legs: AnimatedSprite2D = $Legs
 @onready var torch: PointLight2D = $Torch
 
-var top_position := -125.0
-var middle_position := -50.0
+var top_position := -100.0
+var middle_position := -40.0
 var bottom_position := 0.0
 
 var up_click_time := 0.0
@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("hit_up"):
 		if down_click_time > 0:
 			if now - down_click_time < click_tolerance:
-				torso.play("hit-up")
+				torso.play("hit-mid")
 				position.y = middle_position
 		else:
 			torso.play("hit-up")
@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("hit_down"):
 		if up_click_time > 0:
 			if now - up_click_time < click_tolerance:
-				torso.play("hit-up")
+				torso.play("hit-mid")
 				position.y = middle_position
 		else:
 			torso.play("hit-down")
