@@ -21,6 +21,7 @@ var current_lane: Global.Lane
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var quality_label: Label = $QualityLabel
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 signal note_hit(value: int, quality: Global.Quality)
 signal note_missed(value: int)
@@ -30,6 +31,7 @@ func _ready() -> void:
 	if beat_textures.size() < current_beat + 1:
 		current_beat = Global.Beat.FULL
 	sprite_2d.texture = beat_textures[current_beat]
+	audio_stream_player.pitch_scale = 1 + (current_beat * 0.25)
 
 func setup_note(lane: Global.Lane, screen_time: float, target_pos: float, beat: Global.Beat) -> void:
 	target_position = target_pos
@@ -64,6 +66,7 @@ func hit(hit_position: float) -> void:
 	colllected = true
 	quality_label.text = Global.Quality.keys()[hit_quality]
 	quality_label.show()
+	audio_stream_player.play(0.12)
 	animation_player.play("collect")
 
 func calculate_hit_quality(hit_position: float, hit_time: float) -> Global.Quality:

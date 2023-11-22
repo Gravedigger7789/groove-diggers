@@ -18,6 +18,7 @@ func hit(hit_position: float) -> void:
 	note_hit.emit(100 * hit_quality, hit_quality)
 	quality_label.text = Global.Quality.keys()[hit_quality]
 	animation_player.play("hit")
+	audio_stream_player.play(0.12)
 	check_if_holding = true
 
 func _process(_delta: float) -> void:
@@ -33,6 +34,8 @@ func _process(_delta: float) -> void:
 					node.queue_free()
 					note_hit.emit(100 * hit_quality, hit_quality)
 					colllected = true
+					audio_stream_player.pitch_scale += 0.25
+					audio_stream_player.play(0.12)
 					animation_player.play("collect")
 				queue_redraw()
 	if !found_bacteria_in_lane && current_beat == 1:
