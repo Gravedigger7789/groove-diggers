@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dulmbtarfwn73"]
 
-[ext_resource type="Script" path="res://bar.gd" id="1_5r15v"]
+[ext_resource type="Script" path="res://Notes/bar.gd" id="1_5r15v"]
 [ext_resource type="Texture2D" uid="uid://crrdm2ufisuhl" path="res://icon.svg" id="1_cnpwb"]
 
 [node name="Bar" type="Node2D"]
