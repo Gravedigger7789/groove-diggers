@@ -5,7 +5,9 @@ extends Note2D
 var check_if_holding := false
 var found_bacteria_in_lane := false
 var hit_quality := Global.Quality.OK
-var line_color := Color.GOLD
+#var line_color := Color(.52, .33, .47)
+var border_color := Color8(54, 40, 43)
+var fill_color := Color8(101, 73, 86)
 
 func _ready() -> void:
 	super._ready()
@@ -46,12 +48,13 @@ func _process(_delta: float) -> void:
 			action = "hit_down"
 		if Input.is_action_just_released(action):
 			speed = (target_position - SPAWN_X) / target_time
-			line_color = Color.RED
+			fill_color = Color.DARK_RED
 			queue_redraw()
 
 func _draw() -> void:
 	if current_beat == 0:
-		draw_line(Vector2.ZERO, Vector2(trailing_line_target, 0), line_color, 24)
+		draw_line(Vector2.ZERO, Vector2(trailing_line_target, 0), border_color, 20)
+		draw_line(Vector2.ZERO, Vector2(trailing_line_target, 0), fill_color, 12)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hit":
