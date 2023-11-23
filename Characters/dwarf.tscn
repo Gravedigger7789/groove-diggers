@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=50 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
 [ext_resource type="Texture2D" uid="uid://c480amu2yhoq3" path="res://Characters/dwarf-hit-up-torso.png" id="2_6x7x0"]
+[ext_resource type="Texture2D" uid="uid://cn1b8asmpc43f" path="res://Characters/dwarf-celebrate.png" id="2_qmlx0"]
 [ext_resource type="Texture2D" uid="uid://3qhfd5sicgyg" path="res://Characters/dwarf-damage.png" id="2_rcwvd"]
 [ext_resource type="Texture2D" uid="uid://daiodr4o1jg7p" path="res://Characters/dwarf-hit-down-torso.png" id="3_d5tj5"]
 [ext_resource type="Texture2D" uid="uid://b5u75l2ke756p" path="res://Characters/dwarf-death.png" id="3_qccxk"]
@@ -11,9 +12,37 @@
 [ext_resource type="Texture2D" uid="uid://c3l2f62a1kpvi" path="res://Characters/dwarf-jump-legs.png" id="8_wd7q2"]
 [ext_resource type="AudioStream" uid="uid://cim6vfb6nux3s" path="res://SoundEffects/damage-sound.ogg" id="10_3defc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2agxo"]
-atlas = ExtResource("3_qccxk")
-region = Rect2(0, 0, 160, 160)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyowp"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1k4l"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_780dh"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jporm"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ucmh"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pbjt"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0h57"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auh62"]
+atlas = ExtResource("2_qmlx0")
+region = Rect2(1280, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v174y"]
 atlas = ExtResource("2_rcwvd")
@@ -95,11 +124,32 @@ region = Rect2(640, 0, 160, 160)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2agxo")
+"texture": SubResource("AtlasTexture_fyowp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1k4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_780dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jporm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ucmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pbjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0h57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auh62")
 }],
 "loop": true,
 "name": &"celebrate",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -263,8 +313,9 @@ script = ExtResource("1_kej81")
 
 [node name="Torso" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ww0jq")
-animation = &"run"
+animation = &"celebrate"
 autoplay = "run"
+frame_progress = 0.175363
 
 [node name="Legs" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r26xj")
