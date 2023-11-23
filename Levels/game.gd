@@ -1,10 +1,7 @@
 extends Node2D
 
-@export var sun_alive: Texture
-@export var sun_dead: Texture
-@export var sun_success: Texture
-
 @onready var sun: Sprite2D = $FakeLightLayer/Sun
+@onready var sun_animation_player: AnimationPlayer = $FakeLightLayer/SunAnimationPlayer
 @onready var conductor: AudioStreamPlayer = $Conductor
 @onready var song: Song = $Song
 @onready var background: Node2D = $Background
@@ -39,7 +36,6 @@ var max_combo := 0 :
 		game_over_menu.update_combo(value)
 
 func _ready() -> void:
-	sun.texture = sun_alive
 	song.initialize()
 	conductor.play_song(BEATS_VISIBLE_ON_SCREEN)
 	background.speed = (bar.position.x - 672) / (conductor.seconds_per_beat * BEATS_VISIBLE_ON_SCREEN)
@@ -123,7 +119,7 @@ func _on_dwarf_death() -> void:
 	conductor.stop()
 	background.speed = 0
 	notes.queue_free()
-	sun.texture = sun_dead
+	sun_animation_player.play("sunset")
 	await get_tree().create_timer(1.0).timeout
 	gui.hide()
 	game_over_menu.show()
@@ -134,7 +130,7 @@ func _on_conductor_finished() -> void:
 	background.speed = 0
 	notes.queue_free()
 	player.celebrate()
-	sun.texture = sun_success
+	sun_animation_player.play("sunrise")
 	await get_tree().create_timer(1.0).timeout
 	gui.hide()
 	game_over_menu.show()

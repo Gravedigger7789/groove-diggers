@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhqq5styaiu4x"]
+[gd_scene load_steps=18 format=3 uid="uid://bhqq5styaiu4x"]
 
 [ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
 [ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
@@ -11,30 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cj4mr0cwfmfi7" path="res://Levels/pause_menu.tscn" id="8_q3rug"]
 [ext_resource type="AudioStream" uid="uid://cs8r2ktf587ob" path="res://Songs/fanfare.ogg" id="10_bqi1n"]
 
-[sub_resource type="Gradient" id="Gradient_7sjc3"]
-colors = PackedColorArray(0.784314, 0.784314, 0.647059, 1, 0.156863, 0.156863, 0.156863, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mmrdj"]
-gradient = SubResource("Gradient_7sjc3")
-width = 640
-height = 360
-
-[sub_resource type="Gradient" id="Gradient_oe5sg"]
-colors = PackedColorArray(0.156863, 0.156863, 0.156863, 1, 0.156863, 0.156863, 0.156863, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jnpy8"]
-gradient = SubResource("Gradient_oe5sg")
-width = 640
-height = 360
-
-[sub_resource type="Gradient" id="Gradient_xn43c"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bljej"]
-gradient = SubResource("Gradient_xn43c")
-width = 640
-height = 360
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_61s8x"]
 blend_mode = 3
 
@@ -46,14 +22,87 @@ gradient = SubResource("Gradient_3ib50")
 width = 640
 height = 360
 fill = 1
-fill_from = Vector2(0, 0.5)
-fill_to = Vector2(1, 0.5)
+fill_from = Vector2(0.175, 0.46)
+fill_to = Vector2(1, 0.46)
+
+[sub_resource type="Animation" id="Animation_um8cu"]
+resource_name = "sunset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:texture:fill_to")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0.46), Vector2(0.175, 0.46)]
+}
+
+[sub_resource type="Animation" id="Animation_qkjqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:texture:fill_to")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.46)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sun:texture:gradient:colors")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedColorArray(0.784314, 0.784314, 0.647059, 1, 0.172549, 0.172549, 0.172549, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hytm3"]
+resource_name = "sunrise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:texture:fill_to")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0.46), Vector2(2, 0.46)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sun:texture:gradient:colors")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedColorArray(1, 1, 1, 1, 0.172549, 0.172549, 0.172549, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0ltw"]
+_data = {
+"RESET": SubResource("Animation_qkjqf"),
+"sunrise": SubResource("Animation_hytm3"),
+"sunset": SubResource("Animation_um8cu")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_brnva")
-sun_alive = SubResource("GradientTexture2D_mmrdj")
-sun_dead = SubResource("GradientTexture2D_jnpy8")
-sun_success = SubResource("GradientTexture2D_bljej")
 
 [node name="Background" parent="." instance=ExtResource("2_v2m40")]
 
@@ -72,6 +121,12 @@ position = Vector2(80, 200)
 material = SubResource("CanvasItemMaterial_61s8x")
 texture = SubResource("GradientTexture2D_roijj")
 centered = false
+
+[node name="SunAnimationPlayer" type="AnimationPlayer" parent="FakeLightLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_p0ltw")
+}
+autoplay = "RESET"
 
 [node name="GUI" parent="." instance=ExtResource("6_n3u1a")]
 
