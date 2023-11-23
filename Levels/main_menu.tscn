@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba5a57e4t3yat"]
+[gd_scene load_steps=5 format=3 uid="uid://ba5a57e4t3yat"]
 
 [ext_resource type="Texture2D" uid="uid://valu60yt7cg0" path="res://icon.svg" id="1_1wbjr"]
 [ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="1_5f3fm"]
 [ext_resource type="Script" path="res://Levels/main_menu.gd" id="1_w6adb"]
+[ext_resource type="AudioStream" uid="uid://d4gq2658dgudc" path="res://Songs/main-menu.ogg" id="4_xewas"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_w6adb")
@@ -55,5 +56,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xewas")
+autoplay = true
 
 [connection signal="pressed" from="Control/MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

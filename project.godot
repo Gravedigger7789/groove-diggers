@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="groove-diggers"
-run/main_scene="res://Levels/game.tscn"
+run/main_scene="res://Levels/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=180
 config/icon="res://icon.svg"
