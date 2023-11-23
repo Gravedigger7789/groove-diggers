@@ -213,6 +213,7 @@ script = ExtResource("1_fl6ei")
 beat_textures = Array[Texture]([ExtResource("2_jsltf"), ExtResource("2_jsltf")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_jsltf")
 hframes = 7
 
