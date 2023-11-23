@@ -1,9 +1,12 @@
 extends Node2D
 
+const DEATH_SOUND = preload("res://SoundEffects/death-sound.ogg")
+
 @onready var torso: AnimatedSprite2D = $Torso
 @onready var legs: AnimatedSprite2D = $Legs
 @onready var torch: Sprite2D = $Torch
 @onready var fall_timer: Timer = $FallTimer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var top_position := -100.0
 var middle_position := -40.0
@@ -79,11 +82,15 @@ func damage(value: int) -> void:
 	if !dead:
 		health -= value
 		health_changed.emit(health)
+		audio_stream_player.play()
 		if health <= 0:
 			dead = true
 			set_process(false)
 			set_process_input(false)
 			position.y = bottom_position
+			audio_stream_player.stream = DEATH_SOUND
+			audio_stream_player.volume_db = 0
+			audio_stream_player.play()
 			torso.play("death")
 			legs.stop()
 			legs.hide()

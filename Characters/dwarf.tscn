@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c6yt0hfmum3nn"]
+[gd_scene load_steps=42 format=3 uid="uid://c6yt0hfmum3nn"]
 
 [ext_resource type="Script" path="res://Characters/dwarf.gd" id="1_kej81"]
 [ext_resource type="Texture2D" uid="uid://c480amu2yhoq3" path="res://Characters/dwarf-hit-up-torso.png" id="2_6x7x0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8g4n18i7u7i3" path="res://Characters/dwarf-run-legs.png" id="4_rje2y"]
 [ext_resource type="Texture2D" uid="uid://bmrn1q4l7uraf" path="res://Characters/dwarf-hit-mid-torso.png" id="5_8s8nq"]
 [ext_resource type="Texture2D" uid="uid://c3l2f62a1kpvi" path="res://Characters/dwarf-jump-legs.png" id="8_wd7q2"]
+[ext_resource type="AudioStream" uid="uid://cim6vfb6nux3s" path="res://SoundEffects/damage-sound.ogg" id="10_3defc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2agxo"]
 atlas = ExtResource("3_qccxk")
@@ -278,6 +279,10 @@ one_shot = true
 material = SubResource("CanvasItemMaterial_x6o4x")
 position = Vector2(32, -34)
 texture = SubResource("GradientTexture2D_84t8e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_3defc")
+volume_db = -20.0
 
 [connection signal="animation_finished" from="Torso" to="." method="_on_torso_animation_finished"]
 [connection signal="timeout" from="FallTimer" to="." method="_on_fall_timer_timeout"]
