@@ -12,7 +12,7 @@ The below notices are provided for information only.
 ## [Godot Engine](https://godotengine.org)
 
 License URL - https://godotengine.org/license \
-Godot Copyrights - https://github.com/godotengine/godot/blob/4.1/COPYRIGHT.txt
+Godot Copyrights - https://github.com/godotengine/godot/blob/4.1/COPYRIGHT.txt \
 Godot Authors - https://github.com/godotengine/godot/blob/4.1/AUTHORS.md
 
 ```
