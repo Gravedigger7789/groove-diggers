@@ -13,6 +13,7 @@ extends Node2D
 @onready var gui: CanvasLayer = $GUI
 @onready var game_over: AudioStreamPlayer = $GameOver
 
+const GAME_OVER_SONG = preload("res://Songs/game-over-menu.ogg")
 const NOTE := preload("res://Notes/note.tscn")
 const BACTERIA = preload("res://Notes/bacteria.tscn")
 const BEATS_VISIBLE_ON_SCREEN = 4.0
@@ -121,6 +122,9 @@ func _on_dwarf_death() -> void:
 	notes.queue_free()
 	sun_animation_player.play("sunset")
 	await get_tree().create_timer(1.0).timeout
+	game_over.stream = GAME_OVER_SONG
+	game_over.volume_db = 5
+	game_over.play()
 	gui.hide()
 	game_over_menu.show()
 
