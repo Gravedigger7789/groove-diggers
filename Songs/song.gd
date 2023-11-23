@@ -25,7 +25,6 @@ func initialize() -> void:
 		offset = song_data["offset"]
 		beat_map = song_data["beat_map"]
 		initialized = true
-		print("song initialized")
 
 func load_from_file(filePath: String) -> Dictionary:
 	var parsed_data := {}
