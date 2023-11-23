@@ -1,8 +1,9 @@
 extends CanvasLayer
 
+var MAIN_MENU := load("res://Levels/main_menu.tscn")
+
 @onready var score_label: Label = %Score
 @onready var combo_label: Label = %Combo
-@onready var main_menu: Button = %MainMenu
 @onready var restart: Button = %Restart
 
 func _ready() -> void:
@@ -20,3 +21,6 @@ func _on_restart_pressed() -> void:
 func _on_visibility_changed() -> void:
 	if restart:
 		restart.grab_focus()
+
+func _on_main_menu_pressed() -> void:
+	get_tree().change_scene_to_packed(MAIN_MENU)

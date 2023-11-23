@@ -59,7 +59,6 @@ theme_override_font_sizes/font_size = 24
 text = "Max Combo: 44"
 
 [node name="MainMenu" type="Button" parent="Control/VBoxContainer"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(144, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -77,4 +76,5 @@ focus_neighbor_top = NodePath("../MainMenu")
 text = "Restart"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Control/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
