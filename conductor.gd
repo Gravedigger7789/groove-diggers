@@ -14,6 +14,7 @@ var seconds_per_beat : float
 var play_from_position := 0.0
 var song_position := 0.0
 var song_position_beats := 1
+var song_length := 0.0
 var song_length_beats := 0
 var song_length_measures := 0
 var last_reported_beat := -1
@@ -30,13 +31,27 @@ func _ready() -> void:
 	seconds_per_beat = 60.0 / bpm
 	measures = song.measures
 	stream = song.audio_stream
+	song_length = stream.get_length() 
 	song_length_beats = int(stream.get_length() / seconds_per_beat)
 	song_length_measures = ceil(song_length_beats / measures)
 
 func _process(_delta: float) -> void:
 	if playing:
-		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
-		song_position -= AudioServer.get_output_latency()
+		var time_since_last_mix: float = AudioServer.get_time_since_last_mix()
+		# Some bug exists only when running in web
+		# https://github.com/godotengine/godot/pull/45036
+		# Try to get the time once more, if can't skip this iteration and continue on
+		if time_since_last_mix > song_length:
+			#print("Time since last mix: ", time_since_last_mix)
+			time_since_last_mix = AudioServer.get_time_since_last_mix()
+			#print("Time since last mix try 2: ", time_since_last_mix)
+		if time_since_last_mix > song_length:
+			#print("Failed on 2nd attempt, returning")
+			return
+		
+		song_position = get_playback_position() + time_since_last_mix
+		var output_latency := AudioServer.get_output_latency()
+		song_position -= output_latency
 		song_position -= song.offset # song offset
 		#song_position += (1 / COMPENSATE_HZ) * COMPENSATE_FRAMES
 		song_position_beats = int(song_position / seconds_per_beat) + beats_before_start + 1

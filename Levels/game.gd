@@ -50,7 +50,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _spawn_notes(beat: int, screen_time: float) -> void:
 	var number_of_notes := int(beat_map.size() / song.beats_per_measure)
 	var note_slice := beat_map.slice(number_of_notes * beat, (number_of_notes * beat) + number_of_notes)
-	#for note: String in note_slice:
 	for i in range(0, note_slice.size()):
 		var beat_map_note := note_slice[i] as Global.BeatMap
 		var beat_type := i as Global.Beat
