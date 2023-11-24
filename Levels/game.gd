@@ -44,8 +44,11 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") && !game_over_menu.visible:
 		get_viewport().set_input_as_handled()
-		pause_menu.show()
-		get_tree().paused = true
+		pause_game()
+
+func pause_game() -> void:
+	pause_menu.show()
+	get_tree().paused = true
 
 func _spawn_notes(beat: int, screen_time: float) -> void:
 	var number_of_notes := int(beat_map.size() / song.beats_per_measure)
@@ -137,3 +140,7 @@ func _on_conductor_finished() -> void:
 	await get_tree().create_timer(1.0).timeout
 	gui.hide()
 	game_over_menu.show()
+
+
+func _on_gui_pause_button_pressed() -> void:
+	pause_game()
