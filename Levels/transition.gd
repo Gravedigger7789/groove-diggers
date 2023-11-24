@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	visible = true
 	fade_to_normal()
 	
 func fade_to_normal() -> void:
