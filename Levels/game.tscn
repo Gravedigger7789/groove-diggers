@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bhqq5styaiu4x"]
+[gd_scene load_steps=19 format=3 uid="uid://bhqq5styaiu4x"]
 
 [ext_resource type="Script" path="res://Levels/game.gd" id="1_brnva"]
 [ext_resource type="PackedScene" uid="uid://jw1fkp30ttbj" path="res://conductor.tscn" id="2_pjpie"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://6mxlmv18fmdl" path="res://Levels/game_over_menu.tscn" id="8_hp7pg"]
 [ext_resource type="PackedScene" uid="uid://cj4mr0cwfmfi7" path="res://Levels/pause_menu.tscn" id="8_q3rug"]
 [ext_resource type="AudioStream" uid="uid://cs8r2ktf587ob" path="res://Songs/fanfare.ogg" id="10_bqi1n"]
+[ext_resource type="PackedScene" uid="uid://bc63smysepckb" path="res://Levels/transition.tscn" id="11_cxcn1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_61s8x"]
 blend_mode = 3
@@ -24,21 +25,6 @@ height = 360
 fill = 1
 fill_from = Vector2(0.175, 0.46)
 fill_to = Vector2(1, 0.46)
-
-[sub_resource type="Animation" id="Animation_um8cu"]
-resource_name = "sunset"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sun:texture:fill_to")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 0.46), Vector2(0.175, 0.46)]
-}
 
 [sub_resource type="Animation" id="Animation_qkjqf"]
 length = 0.001
@@ -94,6 +80,21 @@ tracks/1/keys = {
 "values": [PackedColorArray(0.784314, 0.784314, 0.647059, 1, 0.172549, 0.172549, 0.172549, 1), PackedColorArray(1, 1, 1, 1, 0.172549, 0.172549, 0.172549, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_um8cu"]
+resource_name = "sunset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:texture:fill_to")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0.46), Vector2(0.175, 0.46)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0ltw"]
 _data = {
 "RESET": SubResource("Animation_qkjqf"),
@@ -143,6 +144,8 @@ visible = false
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_bqi1n")
+
+[node name="Transition" parent="." instance=ExtResource("11_cxcn1")]
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]

@@ -1,9 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba5a57e4t3yat"]
+[gd_scene load_steps=11 format=3 uid="uid://ba5a57e4t3yat"]
 
-[ext_resource type="Texture2D" uid="uid://valu60yt7cg0" path="res://icon.svg" id="1_1wbjr"]
 [ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="1_5f3fm"]
 [ext_resource type="Script" path="res://Levels/main_menu.gd" id="1_w6adb"]
+[ext_resource type="Texture2D" uid="uid://c7mc0udlfa4w8" path="res://Levels/main-menu.png" id="2_4kn8m"]
 [ext_resource type="AudioStream" uid="uid://d4gq2658dgudc" path="res://Songs/main-menu.ogg" id="4_xewas"]
+[ext_resource type="PackedScene" uid="uid://bc63smysepckb" path="res://Levels/transition.tscn" id="5_mbren"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6cob"]
+atlas = ExtResource("2_4kn8m")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e4ni"]
+atlas = ExtResource("2_4kn8m")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5jbl"]
+atlas = ExtResource("2_4kn8m")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krxi4"]
+atlas = ExtResource("2_4kn8m")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pl01n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e4ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5jbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krxi4")
+}],
+"loop": false,
+"name": &"start",
+"speed": 2.0
+}]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_w6adb")
@@ -23,7 +57,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_1wbjr")
+texture = SubResource("AtlasTexture_d6cob")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -34,31 +68,42 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5f3fm")
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+[node name="Title" type="Label" parent="Control/MarginContainer"]
+modulate = Color(0.690196, 0.356863, 0.172549, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/separation = 28
-
-[node name="Title" type="Label" parent="Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Groove Diggers"
 
-[node name="PlayButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 380
+theme_override_constants/margin_top = 220
+
+[node name="PlayButton" type="Button" parent="Control/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(144, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Play"
+text = "Get Grooving"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xewas")
 autoplay = true
 
-[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_pl01n")
+animation = &"start"
+centered = false
+
+[node name="Transition" parent="." instance=ExtResource("5_mbren")]
+
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
