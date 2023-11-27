@@ -1,18 +1,41 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba5a57e4t3yat"]
+[gd_scene load_steps=15 format=3 uid="uid://ba5a57e4t3yat"]
 
 [ext_resource type="Theme" uid="uid://bsnllwquepaa8" path="res://Fonts/theme.tres" id="1_5f3fm"]
 [ext_resource type="Script" path="res://Levels/main_menu.gd" id="1_w6adb"]
 [ext_resource type="Texture2D" uid="uid://c7mc0udlfa4w8" path="res://Levels/main-menu.png" id="2_4kn8m"]
+[ext_resource type="Texture2D" uid="uid://c6qoinwv3ifr1" path="res://Levels/main-menu_2.png" id="3_cgp3p"]
 [ext_resource type="AudioStream" uid="uid://d4gq2658dgudc" path="res://Songs/main-menu.ogg" id="4_xewas"]
 [ext_resource type="PackedScene" uid="uid://bc63smysepckb" path="res://Levels/transition.tscn" id="5_mbren"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d6cob"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_siemn"]
 atlas = ExtResource("2_4kn8m")
 region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi3k6"]
+atlas = ExtResource("3_cgp3p")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmrnu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siemn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi3k6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1e4ni"]
 atlas = ExtResource("2_4kn8m")
 region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1qi6"]
+atlas = ExtResource("3_cgp3p")
+region = Rect2(0, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5jbl"]
 atlas = ExtResource("2_4kn8m")
@@ -27,6 +50,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1e4ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1qi6")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l5jbl")
@@ -50,14 +76,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_d6cob")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+sprite_frames = SubResource("SpriteFrames_tmrnu")
+autoplay = "default"
+frame = 1
+frame_progress = 0.26784
+centered = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
