@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dulmbtarfwn73"]
 
 [ext_resource type="Script" path="res://Notes/bar.gd" id="1_5r15v"]
-[ext_resource type="Texture2D" uid="uid://1ark1n880f0g" path="res://Notes/hitboxes.png" id="2_ydvqm"]
+[ext_resource type="Texture2D" uid="uid://ddf75n72ewoj0" path="res://Notes/hitboxes_no-border.png" id="2_r0waj"]
 
 [node name="Bar" type="Node2D"]
 position = Vector2(160, 180)
@@ -9,9 +9,9 @@ script = ExtResource("1_5r15v")
 
 [node name="TopNoteSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -85)
-texture = ExtResource("2_ydvqm")
+texture = ExtResource("2_r0waj")
 region_enabled = true
-region_rect = Rect2(65, 64, 30, 31)
+region_rect = Rect2(64, 64, 32, 32)
 
 [node name="TopNote" type="RayCast2D" parent="."]
 position = Vector2(-64, -100)
@@ -20,9 +20,9 @@ collide_with_areas = true
 
 [node name="BottomNoteSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 85)
-texture = ExtResource("2_ydvqm")
+texture = ExtResource("2_r0waj")
 region_enabled = true
-region_rect = Rect2(225, 65, 30, 31)
+region_rect = Rect2(224, 64, 32, 32)
 
 [node name="BottomNote" type="RayCast2D" parent="."]
 position = Vector2(-64, 100)
