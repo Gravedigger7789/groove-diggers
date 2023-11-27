@@ -4,15 +4,15 @@ extends AudioStreamPlayer
 
 @onready var offset_timer: Timer = $OffsetTimer
 
-#const COMPENSATE_FRAMES := 2
-#const COMPENSATE_HZ := 60.0
-
-var bpm : int
-var measures : int
-var beats_per_measure : int
-var seconds_per_beat : float
-var play_from_position := 0.0
-var song_position := 0.0
+var time_begin: float
+var time_delay: float
+var time_paused_start: float
+var total_time_paused: float
+var song_position: float
+var bpm: int
+var measures: int
+var beats_per_measure: int
+var seconds_per_beat: float
 var song_position_beats := 1
 var song_length := 0.0
 var song_length_beats := 0
@@ -35,29 +35,20 @@ func _ready() -> void:
 	song_length_beats = int(stream.get_length() / seconds_per_beat)
 	song_length_measures = ceil(song_length_beats / measures)
 
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_PAUSED:
+			time_paused_start = Time.get_ticks_usec()
+		NOTIFICATION_UNPAUSED:
+			if playing:
+				total_time_paused += Time.get_ticks_usec() - time_paused_start
+
 func _process(_delta: float) -> void:
 	if playing:
-		var time_since_last_mix: float = AudioServer.get_time_since_last_mix()
-		# Some bug exists only when running in web
-		# https://github.com/godotengine/godot/pull/45036
-		# Try to get the time a few times, if can't set to 0 and continue on
-		var last_mix_attempts := 0
-		while time_since_last_mix > song_length:
-			if last_mix_attempts >= 5:
-				break
-			time_since_last_mix = AudioServer.get_time_since_last_mix()
-			last_mix_attempts += 1
-		if time_since_last_mix > song_length:
-			time_since_last_mix = 0.0
-		
-		song_position = get_playback_position() + time_since_last_mix
-		var output_latency := AudioServer.get_output_latency()
-		song_position -= output_latency
-		song_position -= song.offset # song offset
-		#song_position += (1 / COMPENSATE_HZ) * COMPENSATE_FRAMES
-		song_position_beats = int(song_position / seconds_per_beat) + beats_before_start + 1
-		#print("Song Position: ", song_position)
-		#print("Song Position Beats: ", song_position_beats)
+		song_position = (Time.get_ticks_usec() - time_begin - total_time_paused) / 1000000.0
+		song_position -= time_delay
+		song_position -= song.offset
+		song_position_beats = int(song_position * bpm / 60.0) + beats_before_start + 1
 		_report_beat()
 
 func _report_beat() -> void:
@@ -70,11 +61,8 @@ func _report_beat() -> void:
 		var beat_number_in_measure := last_reported_beat - (beats_per_measure * (last_reported_measure))
 		beat.emit(beat_number_in_measure - 1, seconds_per_beat, song_length_beats)
 
-func play_song(offset: int, beat_number := 0) -> void:
-	if beat_number > 0:
-		play_from_position = beat_number * seconds_per_beat
-		#last_reported_measure = int((beat_number - 1) / measures)
-	beats_before_start = offset
+func play_song(offset_beats: int) -> void:
+	beats_before_start = offset_beats
 	offset_timer.wait_time = seconds_per_beat
 	offset_timer.start()
 
@@ -86,7 +74,9 @@ func _on_offset_timer_timeout() -> void:
 		offset_timer.wait_time = adjusted_offset_time
 		offset_timer.start()
 	else:
-		play(play_from_position)
+		time_begin = Time.get_ticks_usec()
+		time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+		play()
 		offset_timer.stop()
 	_report_beat()
 	song_position_beats += 1
