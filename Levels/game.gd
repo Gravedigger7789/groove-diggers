@@ -12,6 +12,7 @@ extends Node2D
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 @onready var gui: CanvasLayer = $GUI
 @onready var game_over: AudioStreamPlayer = $GameOver
+@onready var bar_spawn_point := bar.position.x
 
 const GAME_OVER_SONG = preload("res://Songs/game-over-menu.ogg")
 const NOTE := preload("res://Notes/note.tscn")
@@ -89,20 +90,24 @@ func _spawn_notes(beat: int, screen_time: float) -> void:
 
 
 func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> void:
-	if notes && bar:
-		var instance := NOTE.instantiate()
-		instance.setup_note(lane, screen_time, bar.position.x, beat)
-		instance.note_hit.connect(_on_note_hit)
-		instance.note_missed.connect(_on_note_missed)
+	var instance := NOTE.instantiate()
+	instance.setup_note(lane, screen_time, bar_spawn_point, beat)
+	instance.note_hit.connect(_on_note_hit)
+	instance.note_missed.connect(_on_note_missed)
+	if notes:
 		notes.add_child(instance)
+	else:
+		instance.queue_free()
 
 func _spawn_long_note(lane: Global.Lane, type: int, screen_time: float) -> void:
-	if notes && bar:
-		var instance := BACTERIA.instantiate()
-		instance.setup_note(lane, screen_time, bar.position.x, type)
-		instance.note_hit.connect(_on_note_hit)
-		instance.note_missed.connect(_on_note_missed)
+	var instance := BACTERIA.instantiate()
+	instance.setup_note(lane, screen_time, bar_spawn_point, type)
+	instance.note_hit.connect(_on_note_hit)
+	instance.note_missed.connect(_on_note_missed)
+	if notes:
 		notes.add_child(instance)
+	else:
+		instance.queue_free()
 
 func _on_note_hit(value: int, _quality: Global.Quality) -> void:
 	score += value
