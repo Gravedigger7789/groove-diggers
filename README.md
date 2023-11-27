@@ -25,12 +25,12 @@ When the gold crosses the of the top/bottom lane pickaxe click the corresponding
 
 When the purple bacteria crosses the of the top/bottom lane pickaxe click and hold the corresponding key to destroy it and it's counterpart. If there is purple bacteria in both lanes, click and hold both lanes at once.
 
->Top lane keys  
+Top lane keys:
 >Keyboard: `Up Arrow`, `Left Arrow`, `W`, `A`, `Z`, `N`, `Period`  
 >Touch Screen: `Touch` on `Left` side  
 >Controller: `Left Trigger`, `Right Bumper`, `Left Stick Up`, `Right Stick Up`, `D-pad Up`, `D-pad Left`, `Xbox A`, `Xbox Y`
 
->Bottom lane keys  
+Bottom lane keys:
 >Keyboard: `Down Arrow`, `Right Arrow`, `S`, `D`, `X`, `M`, `Forward Slash`  
 >Touch Screen: `Touch` on `Right` Side  
 >Controller: `Right Trigger`, `Left Bumper`, `Left Stick Down`, `Right Stick Down`, `D-pad Down`, `D-pad Right`, `Xbox B`, `Xbox X`
