@@ -46,9 +46,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		pause_game()
 
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_WM_WINDOW_FOCUS_OUT \
+		, NOTIFICATION_APPLICATION_FOCUS_OUT \
+		, NOTIFICATION_APPLICATION_PAUSED \
+		, NOTIFICATION_WM_GO_BACK_REQUEST \
+		, NOTIFICATION_WM_SIZE_CHANGED:
+			pause_game()
+
 func pause_game() -> void:
-	pause_menu.show()
-	get_tree().paused = true
+	if !game_over_menu.visible:
+		pause_menu.show()
+		get_tree().paused = true
 
 func _spawn_notes(beat: int, screen_time: float) -> void:
 	var number_of_notes := int(beat_map.size() / song.beats_per_measure)
