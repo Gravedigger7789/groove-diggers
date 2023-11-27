@@ -40,14 +40,15 @@ func _process(_delta: float) -> void:
 		var time_since_last_mix: float = AudioServer.get_time_since_last_mix()
 		# Some bug exists only when running in web
 		# https://github.com/godotengine/godot/pull/45036
-		# Try to get the time once more, if can't skip this iteration and continue on
-		if time_since_last_mix > song_length:
-			#print("Time since last mix: ", time_since_last_mix)
+		# Try to get the time a few times, if can't set to 0 and continue on
+		var last_mix_attempts := 0
+		while time_since_last_mix > song_length:
+			if last_mix_attempts >= 5:
+				break
 			time_since_last_mix = AudioServer.get_time_since_last_mix()
-			#print("Time since last mix try 2: ", time_since_last_mix)
+			last_mix_attempts += 1
 		if time_since_last_mix > song_length:
-			#print("Failed on 2nd attempt, returning")
-			return
+			time_since_last_mix = 0.0
 		
 		song_position = get_playback_position() + time_since_last_mix
 		var output_latency := AudioServer.get_output_latency()
