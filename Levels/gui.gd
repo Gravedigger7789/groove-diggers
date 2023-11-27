@@ -66,7 +66,7 @@ func update_health_icons() -> void:
 		health_33.modulate = full_color
 	else:
 		health_33.modulate = empty_color
-	if health_percent >= 0:
+	if health_percent > 0.0:
 		health_empty.modulate = full_color
 	else:
 		health_empty.modulate = empty_color

@@ -5,8 +5,9 @@ class_name Note2D
 
 # screen res + half object size
 const SPAWN_X := 640 + 32
-const TOP_SPAWN = Vector2(SPAWN_X, 80)
-const BOTTOM_SPAWN = Vector2(SPAWN_X, 280)
+const TOP_SPAWN := Vector2(SPAWN_X, 80)
+const BOTTOM_SPAWN := Vector2(SPAWN_X, 280)
+const DAMAGE := 5
 
 var speed : float
 var target_position: float
@@ -51,7 +52,7 @@ func setup_note(lane: Global.Lane, screen_time: float, target_pos: float, beat: 
 func _physics_process(delta: float) -> void:
 	position.x += speed * delta
 	if !colllected && position.x <= target_position - target_missed_offset:
-		note_missed.emit(5)
+		note_missed.emit(DAMAGE)
 		queue_free()
 
 	#if position.x <= target_position && !colllected:

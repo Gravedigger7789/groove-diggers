@@ -86,23 +86,27 @@ func _spawn_note(lane: Global.Lane, beat: Global.Beat, screen_time: float) -> vo
 		instance.note_missed.connect(_on_note_missed)
 		notes.add_child(instance)
 
-func _spawn_long_note(lane: Global.Lane, type: int, screen_time: float) -> Node2D:
-	var instance: Node
+func _spawn_long_note(lane: Global.Lane, type: int, screen_time: float) -> void:
 	if notes && bar:
-		instance = BACTERIA.instantiate()
+		var instance := BACTERIA.instantiate()
 		instance.setup_note(lane, screen_time, bar.position.x, type)
 		instance.note_hit.connect(_on_note_hit)
 		instance.note_missed.connect(_on_note_missed)
 		notes.add_child(instance)
-	return instance
 
 func _on_note_hit(value: int, _quality: Global.Quality) -> void:
 	score += value
 	combo += 1
 
 func _on_note_missed(value: int) -> void:
-	player.damage(value)
-	combo = 0
+	if player:
+		player.damage(value)
+		combo = 0
+
+func _on_bar_missed() -> void:
+	if player:
+		player.damage(1)
+		combo = 0
 
 func _on_conductor_measure(measure_position: int, _song_length_measures: int) -> void:
 	var measure_look_ahead := int (BEATS_VISIBLE_ON_SCREEN / song.beats_per_measure) + measure_position
@@ -130,7 +134,6 @@ func _on_dwarf_death() -> void:
 	gui.hide()
 	game_over_menu.play_failure()
 
-
 func _on_conductor_finished() -> void:
 	game_over.play()
 	background.speed = 0
@@ -140,7 +143,6 @@ func _on_conductor_finished() -> void:
 	await get_tree().create_timer(3.0).timeout
 	gui.hide()
 	game_over_menu.play_success()
-
 
 func _on_gui_pause_button_pressed() -> void:
 	pause_game()

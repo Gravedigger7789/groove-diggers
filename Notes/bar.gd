@@ -3,6 +3,8 @@ extends Node2D
 @onready var top_note: RayCast2D = $TopNote
 @onready var bottom_note: RayCast2D = $BottomNote
 
+signal missed
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("hit_up"):
 		check_for_collision(top_note)
@@ -19,6 +21,7 @@ func check_for_collision(raycast: RayCast2D) -> void:
 		raycast.force_raycast_update()
 	else:
 		raycast.clear_exceptions()
+		missed.emit()
 
 func get_raycast_collision_distance(raycast: RayCast2D) -> float:
 	var collision_distance := -1.0

@@ -154,3 +154,4 @@ stream = ExtResource("10_bqi1n")
 [connection signal="death" from="Dwarf" to="." method="_on_dwarf_death"]
 [connection signal="health_changed" from="Dwarf" to="GUI" method="_on_dwarf_health_changed"]
 [connection signal="pause_button_pressed" from="GUI" to="." method="_on_gui_pause_button_pressed"]
+[connection signal="missed" from="Notes/Bar" to="." method="_on_bar_missed"]
