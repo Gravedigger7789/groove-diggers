@@ -13,10 +13,11 @@
 
 ## Backstory
 
+You happen across a sleeping giant, a race notorious for using the purest of gold to fill their teeth. Many have died trying to recover the precious metal, but you have a secret weapon- rhythm! Groove to the beat of the beast's snores while you plunder his fillings, and make it out with enough gold to buy a round of pints for the homies.
 
 ## Object of the Game
 
-- Mine as much gold from the giants teeth as possible by hitting the notes with precision timing!
+- Mine as much gold from the giant's teeth as possible by hitting the notes with precision timing!
 - When mining the gold, line up the center of the pickaxe with the center of the gold for the most points.
 - Missing a note will cause you to spill some of your beer, be careful not to run out!
 
