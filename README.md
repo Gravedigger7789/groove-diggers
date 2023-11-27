@@ -7,7 +7,8 @@
 
 **skāl - _verb_**
 
-- To remove tartar and plaque from teeth.
+- To climb up something steep, such as a wall, building, or a sleeping giant
+- To remove tartar, plaque, or gold from teeth.
 
 ---
 
