@@ -17,7 +17,8 @@
 ## Object of the Game
 
 - Mine as much gold from the giants teeth as possible by hitting the notes with precision timing!
-- When mining the gold, line up the center of the pickaxe with the center of the gold for the most points!
+- When mining the gold, line up the center of the pickaxe with the center of the gold for the most points.
+- Missing a note will cause you to spill some of your beer, be careful not to run out!
 
 ## How to Play
 
