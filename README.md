@@ -21,9 +21,9 @@
 
 ## How to Play
 
-When the gold crosses the of the top/bottom lane pickaxe click the corresponding key to mine it. If there is gold in both lanes, click both lane keys at once.
+When the **gold** crosses the of the top/bottom lane's **pickaxe** click the corresponding **key** to mine it. If there is **gold** in both lanes, click **both** lanes **keys** at once.
 
-When the purple bacteria crosses the of the top/bottom lane pickaxe click and hold the corresponding key to destroy it and it's counterpart. If there is purple bacteria in both lanes, click and hold both lanes at once.
+When the **purple bacteria** crosses the of the top/bottom lane's **pickaxe** click and **hold** the corresponding **key** to destroy it and it's counterpart. If there is **purple bacteria** in both lanes, click and **hold both** lanes **keys** at once.
 
 Top lane keys:
 >Keyboard: `Up Arrow`, `Left Arrow`, `W`, `A`, `Z`, `N`, `Period`  
