@@ -8,6 +8,7 @@ const SPAWN_X := 640 + 32
 const TOP_SPAWN := Vector2(SPAWN_X, 80)
 const BOTTOM_SPAWN := Vector2(SPAWN_X, 280)
 const DAMAGE := 5
+const VALUE := 5
 
 var speed : float
 var target_position: float
@@ -63,7 +64,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func hit(hit_position: float) -> void:
 	var hit_quality := calculate_hit_quality(hit_position, Time.get_unix_time_from_system())
-	note_hit.emit(100 * hit_quality, hit_quality)
+	note_hit.emit(VALUE * hit_quality, hit_quality)
 	colllected = true
 	quality_label.text = Global.Quality.keys()[hit_quality]
 	quality_label.show()
