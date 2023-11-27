@@ -293,7 +293,13 @@ alignment = 1
 [node name="Title" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.690196, 0.356863, 0.172549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 36
 text = "Groove Diggers"
 
 [node name="SuccessText" type="Label" parent="Control/VBoxContainer"]
