@@ -116,7 +116,7 @@ theme_override_constants/margin_top = 220
 
 [node name="PlayButton" type="Button" parent="Control/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(144, 0)
+custom_minimum_size = Vector2(144, 36)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

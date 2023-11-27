@@ -351,7 +351,7 @@ theme_override_font_sizes/font_size = 20
 text = "Gold: 0"
 
 [node name="MainMenu" type="Button" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(144, 0)
+custom_minimum_size = Vector2(144, 36)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -375,7 +375,7 @@ text = "Max Combo: 0"
 
 [node name="Restart" type="Button" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(144, 0)
+custom_minimum_size = Vector2(144, 36)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
