@@ -128,7 +128,7 @@ func _on_dwarf_death() -> void:
 	game_over.volume_db = 5
 	game_over.play()
 	gui.hide()
-	game_over_menu.show()
+	game_over_menu.play_failure()
 
 
 func _on_conductor_finished() -> void:
@@ -137,9 +137,9 @@ func _on_conductor_finished() -> void:
 	notes.queue_free()
 	player.celebrate()
 	sun_animation_player.play("sunrise")
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	gui.hide()
-	game_over_menu.show()
+	game_over_menu.play_success()
 
 
 func _on_gui_pause_button_pressed() -> void:

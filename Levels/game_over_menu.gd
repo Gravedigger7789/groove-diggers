@@ -5,6 +5,7 @@ var MAIN_MENU := load("res://Levels/main_menu.tscn")
 @onready var score_label: Label = %Score
 @onready var combo_label: Label = %Combo
 @onready var restart: Button = %Restart
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	restart.grab_focus()
@@ -24,3 +25,11 @@ func _on_visibility_changed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_packed(MAIN_MENU)
+
+func play_success() -> void:
+	show()
+	animation_player.play("success")
+
+func play_failure() -> void:
+	show()
+	animation_player.play("failure")
