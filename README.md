@@ -46,9 +46,10 @@ Bottom lane keys:
 - Special thanks to King John
 
 ## Known Issues
-- For the best experience please use the PC download, older browsers cause too much lag
+- The game has been exported to work on the web but it was not designed for it. For the best experience please use the PC download
 - Firefox mobile sound crackles, please use Chrome or your PC
 - Game does not load on iOS, please use the PC download
+- Some older android phones have missing audio issues, please use the PC download
 
 ## Third Party Licenses
 
